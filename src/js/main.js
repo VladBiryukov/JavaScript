@@ -1,87 +1,115 @@
-var message,
-    value_1,
-    value_2,
-    check_1,
-    check_2;
 
-message = prompt("какие типы данных вам нужно сравнить между собой? \nможно сравнивать: \nчисла \nстроки \nвыведет наибольшее ");
 
-if (message === "") {
-    console.log("вы ничего не ввели");
+
+
+
+
+
+
+
+
+/* var i,
+   kay;
+var user = {
+   name: "Vlad",
+   age: 21,
+   info: {
+      unever: ["ttt"],
+      addres: ["тольятти", "щултпцуп"]
+   }
 }
-else if (message == "числа") {
-    message = prompt("Введите первое значение");
-    value_1 = message;
-    message = prompt("Введите второе значение");
-    value_2 = message;
-    check_1 = + value_1;
-    check_2 = + value_2;
+console.log(user)
+console.log(user.info.addres[0]) */
+/* 
+for (i = 0; i <= 3; i++) {
+    console.log(i)
+} */
 
-
-    if (check_1 === Number(check_1) && check_2 === Number(check_2)) {
-        if (check_1 == "" && check_2 == "") {
-            console.log("вы ничего не ввели")
-        }
-        else if (check_1 == "" || check_2 == "") {
-            console.log("вы не ввели один из аргументов")
-        }
-        else if (check_1 !== Number(check_1) && check_2 === Number(check_2)) {
-            console.log("первый аргумент строка, а второй аргумент - число, приведите идентичные типы данных")
-        }
-        else if (check_1 === Number(check_1) && check_2 !== Number(check_2)) {
-            console.log("первый аргумент число, а второй аргумент - строка, приведите идентичные типы данных")
-        }
-        else if (check_1 > check_2) {
-            console.log(value_1)
-        }
-        else if (check_1 < check_2) {
-            console.log(value_2)
-        }
-        else if (check_1 == check_2) {
-            console.log(value_1)
-        }
-        else {
-            console.log("что то не так")
-        }
-    }
+/* for (i = 0; i < 3; i++) {
+    user.i = ["число"];
+    user[i] = prompt("введите число " + (i + 1) + " число");
 }
-else if (message == "строки") {
-    message = prompt("введите первую строку");
-    value_1 = message;
-    message = prompt("введите вторую строку");
-    value_2 = message;
-    check_1 = + value_1;
-    check_2 = + value_2;
-    // фильтр
-    if (check_1 == "" && check_2 == "") {
-        console.log("вы ничего не ввели")
-    }
-    else if (check_1 == "" || check_2 == "") {
-        console.log("вы не ввели один из аргументов")
-    }
-    else if (check_1 !== Number(check_1) && check_2 === Number(check_2)) {
-        console.log("первый аргумент строка, а второй аргумент - число, приведите идентичные типы данных")
-    }
-    else if (check_1 === Number(check_1) && check_2 !== Number(check_2)) {
-        console.log("первый аргумент число, а второй аргумент - строка, приведите идентичные типы данных")
-    }
-    else if (check_1 === Number(check_1) && check_2 === Number(check_2)) {
-        console.log("тут мы сравниваем строки")
-    }
-    //сравнение букв
-    else if (value_1 !== Number(value_1) && value_2 !== Number(value_2)) {
+for (i = 0; i <= 3; i++) {
+    console.log(i)
+} */
 
-        if (value_1 > value_2) {
-            console.log(value_1);
-        }
-        else if (value_1 < value_2) {
-            console.log(value_2)
-        }
-        else if (value_1 === value_2) {
-            console.log("буквы равны")
-        }
-    }
-}
+
+/* 
+var value,
+   check;
+while (value = prompt("введите число")) {
+   var check = + value;
+
+   if (check !== Number(check) || check == 0) {
+      console.log("конец цикла")
+      break
+   }
+   else if (check === Number(check)) {
+      var check_2 = prompt("введите второе значение");
+      check_2 = + check_2;
+      if (check_2 !== Number(check_2) || check_2 == 0) {
+         console.log("конец цикла")
+         break
+      }
+      else if (check_2 === Number(check_2)) {
+         if (check_2 < check) {
+            console.log(check + "наибольшее")
+         }
+         else if (check_2 > check) {
+            console.log(check_2 + "наибольшее")
+         }
+      }
+   }
+} */
+
+
+
+
+/* 
+var shops,
+   message;
+shops = {};
+message = prompt("введите продукт");
+ */
+
+
+
+var user = {},
+   message;
+
+/* user.name = prompt("введите Ваше имя");
+user.s_name = prompt("введите Вашу фамилию");
+user.age = prompt("введите Ваш возраст");
+console.log(user) */
+
+
+var shops = {
+   
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // var compare,
@@ -105,7 +133,7 @@ else if (message == "строки") {
 //     number_1 = Number(number_1);
 //     number_2 = Number(number_2);
 //     if (number_1 !== Number(number_1) && number_2 !== Number(number_2)) {
-//         console.log("вы сравниваетет строки, если хотете сравнить строку, в начале нужно ввести 'строки' или, если вы забыли переключить язык на русский 'cnhjrb' ");
+//         console.log("вы сравниваетет строки, если хотете сравнить строку, в начале нужно ввести 'строки' или, если вы //забыли переключить язык на русский 'cnhjrb' ");
 //     }
 //     // проверка на число
 //     // если число то идём дальше
@@ -144,7 +172,7 @@ else if (message == "строки") {
 //         console.log("что то пошло не так")
 //     }
 // }
-// если нан то передать значение , тоесть сделать копию с которой можно будет дальше работать потому что первое значение будет равно nan 
+// если нан то передать значение , тоесть сделать копию с которой можно будет дальше работать потому что первое значение //будет равно nan 
 
 
 

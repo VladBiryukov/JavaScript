@@ -19,7 +19,7 @@ function checkString(check) {
     if (String(Number(check)) == "NaN" && check !== "") return true;
     else return false;
 }
-// проверка на ввод 
+// проверка на ввод   
 function checkInput(check) {
     if (check != "" && check != "none" && check != "null" && check != null) return true;
     else return false;
@@ -107,7 +107,7 @@ function notebook2() {
 
         else if (!checkInput(message)) {
             alert("если вы не хотите ничего записывать, введите none");
-        }    
+        }
     }
 }
 

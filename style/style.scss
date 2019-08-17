@@ -243,3 +243,34 @@ body {
 .shell_fire_js {
   transform: translate(30px, -900px);
 }
+
+.box1 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  font-family: Arial, Helvetica, sans-serif;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  // &:hover {
+  //   background: red;
+  //   color: orange;
+  // }
+  // &:active {
+  //   transform: scale(2);
+  // }
+}
+// .box_red {
+//   background: red;
+//   color: rgba(59, 41, 7);
+// }
+
+.context {
+  width: 200px;
+  height: 200px;
+  background: black;
+  display: none;
+}
+
+.context_open_js {
+  display: block;
+}

@@ -1,132 +1,179 @@
-var block,
-    message;
+// var block,
+//     message;
 
-// *** первое задание ***
-createElements("div", "block_js", 1);
+// // *** первое задание ***
+// createElements("div", "block_js", 1);
 
-block = document.getElementsByClassName("block_js")[0];
-block.innerHTML = "cat-metal";
+// block = document.getElementsByClassName("block_js")[0];
+// block.innerHTML = "cat-metal";
 
-// добавляет n количество элементов с class
-function createElements(element, name, quantity) {
-    var createDiv;
-    for (var i = 0; i < quantity; i++) {
-        createDiv = document.createElement(element);
-        createDiv.classList = name;
-        document.body.appendChild(createDiv);
-    }
-}
+// // добавляет n количество элементов с class
+// function createElements(element, name, quantity) {
+//     var createDiv;
+//     for (var i = 0; i < quantity; i++) {
+//         createDiv = document.createElement(element);
+//         createDiv.classList = name;
+//         document.body.appendChild(createDiv);
+//     }
+// }
 
-// *** второе задание ***
-function showClass() {
-    // message = prompt("Введите название класса"); !!!
-    if (checkClass(message)) {
-        console.log("содержимое класса " + '"' + message + '": ' + document.getElementsByClassName(message)[0].innerHTML);
-    }
-    else if (!checkClass(message)) console.log("класс " + message + " не найден");
-};
+// // *** второе задание ***
+// function showClass() {
+//     // message = prompt("Введите название класса"); !!!
+//     if (checkClass(message)) {
+//         console.log("содержимое класса " + '"' + message + '": ' + document.getElementsByClassName(message)[0].innerHTML);
+//     }
+//     else if (!checkClass(message)) console.log("класс " + message + " не найден");
+// };
 
-showClass();
+// showClass();
 
-// проверяет наличие класса
-function checkClass(nameClass) {
-    if (document.getElementsByClassName(nameClass)[0]) return true;
-    else return false;
-}
+// // проверяет наличие класса
+// function checkClass(nameClass) {
+//     if (document.getElementsByClassName(nameClass)[0]) return true;
+//     else return false;
+// }
 
-//*** третье задание ***
-block.classList.add("block_test", "block_black");
-
-
-
-createElements("div", "wrap-square", 1);
-var wrap = document.getElementsByClassName("wrap-square")[0];
-for (var i = 0; i < 4; i++) {
-    wrap.innerHTML += '<div class="square_js"></div>';
-}
-for (var i = 0; i < document.getElementsByClassName("square_js").length; i++) {
-    document.getElementsByClassName("square_js")[i].innerHTML = i + 1;
-    document.getElementsByClassName("square_js")[i].classList.add("square-default_js", "square_" + (i + 1) + "_js");
-}
-
-var square_1 = document.getElementsByClassName("square_js")[0],
-    square_2 = document.getElementsByClassName("square_js")[1],
-    square_3 = document.getElementsByClassName("square_js")[2],
-    square_4 = document.getElementsByClassName("square_js")[3];
-
-var position = ["",
-    "square-top-left_js",
-    "square-top-right_js",
-    "square-bottom-right_js",
-    "square-bottom-left_js"
-]
-
-function animationSquare() {
-    setTimeout(function name() {
-        square_1.classList.toggle(position[2]);
-        square_2.classList.toggle(position[3]);
-        square_3.classList.toggle(position[4]);
-        square_4.classList.toggle(position[1]);
-    }, 0)
-    setTimeout(function name() {
-        square_1.classList.toggle(position[2]);
-        square_1.classList.toggle(position[3]);
-        square_2.classList.toggle(position[3]);
-        square_2.classList.toggle(position[4]);
-        square_3.classList.toggle(position[4]);
-        square_3.classList.toggle(position[1]);
-        square_4.classList.toggle(position[1]);
-        square_4.classList.toggle(position[2]);
-    }, 2000)
-    setTimeout(function name() {
-        square_1.classList.toggle(position[3]);
-        square_1.classList.toggle(position[4]);
-        square_2.classList.toggle(position[4]);
-        square_2.classList.toggle(position[1]);
-        square_3.classList.toggle(position[1]);
-        square_3.classList.toggle(position[2]);
-        square_4.classList.toggle(position[2]);
-        square_4.classList.toggle(position[3]);
-    }, 4000)
-    setTimeout(function name() {
-        square_1.classList.toggle(position[4]);
-        square_1.classList.toggle(position[1]);
-        square_2.classList.toggle(position[2]);
-        square_3.classList.toggle(position[2]);
-        square_3.classList.toggle(position[3]);
-        square_4.classList.toggle(position[3]);
-        square_4.classList.toggle(position[4]);
-    }, 6000)
-}
-animationSquare()
+// //*** третье задание ***
+// block.classList.add("block_test", "block_black");
 
 
 
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
+// createElements("div", "wrap-square", 1);
+// var wrap = document.getElementsByClassName("wrap-square")[0];
+// for (var i = 0; i < 4; i++) {
+//     wrap.innerHTML += '<div class="square_js"></div>';
+// }
+// for (var i = 0; i < document.getElementsByClassName("square_js").length; i++) {
+//     document.getElementsByClassName("square_js")[i].innerHTML = i + 1;
+//     document.getElementsByClassName("square_js")[i].classList.add("square-default_js", "square_" + (i + 1) + "_js");
+// }
 
-var button = document.getElementsByClassName("button_start_js")[0],
-    countdown = document.getElementsByClassName("countdown_js")[0],
-    mechanism = document.getElementsByClassName("mechanism_js")[0],
-    shell = document.getElementsByClassName("shell")[0];
+// var square_1 = document.getElementsByClassName("square_js")[0],
+//     square_2 = document.getElementsByClassName("square_js")[1],
+//     square_3 = document.getElementsByClassName("square_js")[2],
+//     square_4 = document.getElementsByClassName("square_js")[3];
+
+// var position = ["",
+//     "square-top-left_js",
+//     "square-top-right_js",
+//     "square-bottom-right_js",
+//     "square-bottom-left_js"
+// ]
+
+// function animationSquare() {
+//     setTimeout(function name() {
+//         square_1.classList.toggle(position[2]);
+//         square_2.classList.toggle(position[3]);
+//         square_3.classList.toggle(position[4]);
+//         square_4.classList.toggle(position[1]);
+//     }, 0)
+//     setTimeout(function name() {
+//         square_1.classList.toggle(position[2]);
+//         square_1.classList.toggle(position[3]);
+//         square_2.classList.toggle(position[3]);
+//         square_2.classList.toggle(position[4]);
+//         square_3.classList.toggle(position[4]);
+//         square_3.classList.toggle(position[1]);
+//         square_4.classList.toggle(position[1]);
+//         square_4.classList.toggle(position[2]);
+//     }, 2000)
+//     setTimeout(function name() {
+//         square_1.classList.toggle(position[3]);
+//         square_1.classList.toggle(position[4]);
+//         square_2.classList.toggle(position[4]);
+//         square_2.classList.toggle(position[1]);
+//         square_3.classList.toggle(position[1]);
+//         square_3.classList.toggle(position[2]);
+//         square_4.classList.toggle(position[2]);
+//         square_4.classList.toggle(position[3]);
+//     }, 4000)
+//     setTimeout(function name() {
+//         square_1.classList.toggle(position[4]);
+//         square_1.classList.toggle(position[1]);
+//         square_2.classList.toggle(position[2]);
+//         square_3.classList.toggle(position[2]);
+//         square_3.classList.toggle(position[3]);
+//         square_4.classList.toggle(position[3]);
+//         square_4.classList.toggle(position[4]);
+//     }, 6000)
+// }
+// animationSquare()
 
 
-button.onclick = function () {
-    for (var i = 0; i < Number(countdown.innerHTML); i++) {
-        setTimeout(function () {
-            countdown.innerHTML = countdown.innerHTML - Number(1);
-            if (countdown.innerHTML == 0) {
-                countdown.innerHTML = "BOOM!"
-            }
-        }, (i + 1) * 1000)
-    }
-    setTimeout(function () {
-        mechanism.classList.add("mechanism_fire_js");
-    }, countdown.innerHTML * 1000)
-    setTimeout(function () {
-        shell.classList.add("shell_fire_js");
-    }, countdown.innerHTML * 1000);
-}
+
+// ////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////
+
+// var button = document.getElementsByClassName("button_start_js")[0],
+//     countdown = document.getElementsByClassName("countdown_js")[0],
+//     mechanism = document.getElementsByClassName("mechanism_js")[0],
+//     shell = document.getElementsByClassName("shell")[0];
 
 
+// button.onclick = function () {
+//     for (var i = 0; i < Number(countdown.innerHTML); i++) {
+//         setTimeout(function () {
+//             countdown.innerHTML = countdown.innerHTML - Number(1);
+//             if (countdown.innerHTML == 0) {
+//                 countdown.innerHTML = "BOOM!"
+//             }
+//         }, (i + 1) * 1000)
+//     }
+//     setTimeout(function () {
+//         mechanism.classList.add("mechanism_fire_js");
+//     }, countdown.innerHTML * 1000)
+//     setTimeout(function () {
+//         shell.classList.add("shell_fire_js");
+//     }, countdown.innerHTML * 1000);
+// }
+
+
+var box = document.getElementsByClassName("box1")[0];
+
+// document.body.onmousemove = function targ(e) {
+//     console.log(e);
+//     box.style.top = e.clientY + "px";
+//     box.style.left = e.clientX + "px"
+// }
+// box.addEventListener("click", name);
+
+// box.onckick = function name() {
+//     box.removeEventListener("click", name);
+// }
+
+document.body.addEventListener("keydown", function (event) {
+    console.log(event)
+    if (event.keyCode == 68);
+    console.log(true);
+})
+
+// document.body.contextmenu = function () {
+
+// }
+
+var result = document.getElementsByClassName("result")[0];
+var input = document.getElementsByClassName("input")[0];
+input.addEventListener("input", function (event) {
+    console.log(event);
+    result.innerHTML = input.value
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function counterBox() {
+//     box.innerHTML = box.innerHTML + box.innerHTML++;
+// }
+// box.addEventListener("click", boxRed)
+// box.addEventListener("click", counterBox)
 

@@ -1,29 +1,13 @@
 // VAR
-var message,
+var quantity,
     position,
+    message,
     counter,
-    quantity,
     clone,
     arr,
     i,
     n;
-/*************************** Инструменты *****************************/
-/*************************** Функциии  ******************************/
-//проверка на Number
-function checkNumber(check) {
-    if (String(Number(check)) != "NaN" && check !== "") return true;
-    else return false;
-}
-//проверка на String
-function checkString(check) {
-    if (String(Number(check)) == "NaN" && check !== "") return true;
-    else return false;
-}
-// проверка на ввод   
-function checkInput(check) {
-    if (check != "" && check != "none" && check != "null" && check != null) return true;
-    else return false;
-}
+
 
 
 /////////////////////////////////////

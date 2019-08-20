@@ -1,7 +1,14 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap");
 body {
   margin: 0;
   height: 2000px;
+  overflow: hidden;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .block_js {
@@ -286,24 +293,102 @@ body {
           transform: translate(30px, -900px);
 }
 
-.box1 {
+/******************ДЗ 6*****************/
+.block-change-click_js {
+  border: 6px solid black;
   width: 100px;
   height: 100px;
-  border: 1px solid;
-  font-family: Arial, Helvetica, sans-serif;
-  position: fixed;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  cursor: pointer;
+  -webkit-transition: 2s;
+  transition: 2s;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 
-.context {
+.block-change-click_2_js {
+  border: 5px dotted black;
+  border-radius: 50%;
+}
+
+.block-click-add_js {
   width: 200px;
   height: 200px;
-  background: black;
+  border: solid;
+}
+
+.context-menu_js {
+  z-index: 10;
+  position: absolute;
+  width: 200px;
+  background: #a7a4a4;
   display: none;
 }
 
-.context_open_js {
+.context-menu__item_js {
+  border: 1px solid #696767;
+  padding: 10px 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.context-menu__item_js:hover {
+  background: #5c5a5a;
+}
+
+.square-black_js {
+  z-index: 2;
+  cursor: pointer;
+  -webkit-transition: all 1s cubic-bezier(0.74, 0.51, 0.04, 0.35);
+  transition: all 1s cubic-bezier(0.74, 0.51, 0.04, 0.35);
+  position: absolute;
   display: block;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: black;
+  width: 100px;
+  height: 100px;
+}
+
+.square-black_hidden_js {
+  display: none;
+}
+
+.triangle_js {
+  z-index: 3;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  top: 100px;
+  left: 200px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  overflow: hidden;
+  height: 80px;
+  width: 150px;
+}
+
+.triangle_js::before {
+  position: absolute;
+  content: "";
+  -webkit-box-shadow: -4px -4px 6px -2px rgba(0, 0, 0, 0.32);
+          box-shadow: -4px -4px 6px -2px rgba(0, 0, 0, 0.32);
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 100px;
+  height: 100px;
+  background: orange;
+}
+
+.triangle_hidden_js {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

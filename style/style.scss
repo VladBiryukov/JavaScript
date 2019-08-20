@@ -3,7 +3,12 @@ $FFBethEllen: "Beth Ellen";
 body {
   margin: 0;
   height: 2000px;
+  overflow: hidden;
 }
+* {
+  box-sizing: border-box;
+}
+
 .block_js {
   border: 1px solid;
   height: 300px;
@@ -244,33 +249,93 @@ body {
   transform: translate(30px, -900px);
 }
 
-.box1 {
+/////////////////////////////////////////
+/******************ДЗ 6*****************/
+////////1 задание
+.block-change-click_js {
+  border: 6px solid black;
   width: 100px;
   height: 100px;
-  border: 1px solid;
-  font-family: Arial, Helvetica, sans-serif;
-  position: fixed;
-  transform: translate(-50%, -50%);
-  // &:hover {
-  //   background: red;
-  //   color: orange;
-  // }
-  // &:active {
-  //   transform: scale(2);
-  // }
+  cursor: pointer;
+  transition: 2s;
+  margin-top: 30px;
+  margin-left: 30px;
 }
-// .box_red {
-//   background: red;
-//   color: rgba(59, 41, 7);
-// }
 
-.context {
+.block-change-click_2_js {
+  border: 5px dotted black;
+  border-radius: 50%;
+}
+
+/////// 2 задание
+
+.block-click-add_js {
   width: 200px;
   height: 200px;
+  border: solid;
+}
+
+///////контекстное меню
+
+.context-menu_js {
+  z-index: 10;
+  position: absolute;
+  width: 200px;
+  background: rgb(167, 164, 164);
+  display: none;
+}
+.context-menu__item_js {
+  border: 1px solid rgb(105, 103, 103);
+  padding: 10px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: 1s;
+  &:hover {
+    background: rgb(92, 90, 90);
+  }
+}
+
+// квадрат
+.square-black_js {
+  z-index: 2;
+  cursor: pointer;
+  transition: all 1s cubic-bezier(0.74, 0.51, 0.04, 0.35);
+  position: absolute;
+  display: block;
+  transform: translate(-50%, -50%);
   background: black;
+  width: 100px;
+  height: 100px;
+}
+.square-black_hidden_js {
   display: none;
 }
 
-.context_open_js {
-  display: block;
+// трегольник
+.triangle_js {
+  z-index: 3;
+  cursor: pointer;
+  transition: 0.5s;
+  top: 100px;
+  left: 200px; //***
+  transform: translate(-50%, -50%);
+  position: absolute;
+  overflow: hidden;
+  height: 80px;
+  width: 150px;
+  &::before {
+    position: absolute;
+    content: "";
+    box-shadow: -4px -4px 6px -2px rgba(0, 0, 0, 0.32);
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    transform: rotate(45deg);
+    width: 100px;
+    height: 100px;
+    background: orange;
+  }
+}
+.triangle_hidden_js {
+  display: none;
 }

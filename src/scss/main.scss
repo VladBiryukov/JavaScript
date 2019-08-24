@@ -4,9 +4,10 @@
 //Импорт стилей страниц
 @import "./pages/index";
 
-//Импорт компонентов для страниц
+//Импорт компонентов для страниц slider
 @import "./components/header";
 @import "./components/footer";
 @import "./components/context-menu";
 @import "./components/list";
 @import "./components/temperature";
+@import "./components/slider";

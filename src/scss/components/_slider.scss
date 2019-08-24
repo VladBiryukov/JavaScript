@@ -1,0 +1,79 @@
+// .slider {
+//   &__block {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//   }
+//   &__input {
+//     margin-top: 10px;
+//   }
+//   &__result {
+//     border: 1px solid black;
+//     height: 25px;
+//     width: 200px;
+//     margin-top: 20px;
+//     color: white;
+//     background: black;
+//   }
+//   &__button {
+//     transition: 0.3s;
+//     cursor: pointer;
+//     background: bisque;
+//     display: inline-block;
+//     padding: 10px 30px;
+//     border-radius: 20px;
+//     font-family: Arial, Helvetica, sans-serif;
+//     &:hover {
+//       background: rgb(109, 65, 12);
+//     }
+//   }
+// }
+
+.slider {
+  &__button {
+    user-select: none;
+    background: black;
+    color: wheat;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-left: 120px;
+    cursor: pointer;
+  }
+  &__wrap {
+    //   overflow: hidden;
+    border: 2px solid orange;
+    position: relative;
+    width: 100px;
+    height: 150px;
+    // background: black
+  }
+  &__line {
+    transition: 1s;
+    display: flex;
+    position: absolute;
+    left: 0px;
+    border: 1px solid red;
+    width: 555px;
+  }
+  &__item {  
+    height: 100px;
+    width: 100px;
+    &:nth-child(1) {
+      background: black;
+    }
+    &:nth-child(2) {
+      background: rgb(238, 155, 0);
+    }
+
+    &:nth-child(3) {
+      background: rgb(117, 38, 38);
+    }
+    &:nth-child(4) {
+      background: rgb(38, 224, 47);
+    }
+    &:nth-child(5) {
+      background: rgb(41, 38, 224);
+    }
+  }
+}

@@ -1,49 +1,3 @@
-// Написать скрипт, который будет изменять стили блоков при нажатии на них мышкой,
-// без использования CSS (использовать onclick и addEventListener)
-
-// Написать скрипт, чтобы при нажатии на блок, 
-// снизу добавился новый блок (работать код должен единожды)
-
-////первое задание
-
-function dz6Tasc1() {
-    createElements("div", "block-change-click_js", 2)
-    var blockChangeClick1 = document.getElementsByClassName("block-change-click_js")[0],
-        blockChangeClick2 = document.getElementsByClassName("block-change-click_js")[1];
-
-    blockChangeClick1.classList.add("block-change-click_1_js");
-    blockChangeClick2.classList.add("block-change-click_2_js");
-
-    function blockRotate() {
-        blockChangeClick1.style.transform = "rotate(360deg) scale(0.5)";
-        blockChangeClick1.style.borderRadius = "50%";
-        blockChangeClick1.style.border = "6px solid red";
-        blockChangeClick1.style.background = "orange";
-    }
-    function wheelWent() {
-        blockChangeClick2.style.transform = "rotate(360deg)";
-        blockChangeClick2.style.marginLeft = "250px";
-    }
-
-    blockChangeClick1.addEventListener("click", blockRotate);
-    blockChangeClick2.addEventListener("click", wheelWent);
-}
-dz6Tasc1()
-
-// второе задание
-
-function dz6Tasc2() {
-    createElements("div", "block-click-add_js", 1);
-    var blockClickAdd = document.getElementsByClassName("block-click-add_js")[0];
-
-    function clickAddBlock() {
-        createElements("div", "block-click-add_js", 1);
-        blockClickAdd.removeEventListener("click", clickAddBlock);
-    }
-    blockClickAdd.addEventListener("click", clickAddBlock);
-}
-dz6Tasc2() 
-
 // третье задание   
 function dz6Tasc3() {
     var body = document.body,
@@ -56,7 +10,6 @@ function dz6Tasc3() {
         squareBlack,
         triangle,
 
-
         contextMenuText = [
             "Добавить/удалить квадрат",
             "Анимация квадрата",
@@ -64,6 +17,7 @@ function dz6Tasc3() {
             "Анимация треугольника",
             "Отчистить"
         ];
+
     contextMenuItem_1.innerHTML = contextMenuText[0];
     contextMenuItem_2.innerHTML = contextMenuText[1];
     contextMenuItem_3.innerHTML = contextMenuText[2];
@@ -75,9 +29,16 @@ function dz6Tasc3() {
         contextMenu.style.display = "block";
         contextMenu.style.top = e.clientY + "px";
         contextMenu.style.left = e.clientX + "px";
-        return false;
-    }
 
+        positionContextMenuY = e.clientY + "px";
+        positionContextMenuX = e.clientX + "px";
+        return positionContextMenuY, positionContextMenuX, false;
+    }
+    body.addEventListener("click", (e) => {
+        if (e.target == body) {
+            contextMenu.style.display = "none";
+        }
+    })
     // ESC
     body.addEventListener("keydown", function closeContextMenuKey(event) {
         if (event.keyCode == 27) {
@@ -115,7 +76,7 @@ function dz6Tasc3() {
         body.removeEventListener("click", clickAddRemoveSquare);
         body.removeEventListener("click", clickAddRemoveTriangle);
         if (triangle && triangle.classList == "triangle_js") {
-            body.addEventListener("mouseover", leftRightTriangle);
+            body.addEventListener("mousemove", leftRightTriangle);
         }
     })
 
@@ -127,14 +88,18 @@ function dz6Tasc3() {
 
     // ADD Квадрат
     function clickAddRemoveSquare(e) {
+
         if (!squareBlack) {
             createElements("div", "square-black_js", 1);
             squareBlack = document.getElementsByClassName("square-black_js")[0];
+            squareBlack.style.top = positionContextMenuY;
+            squareBlack.style.left = positionContextMenuX;
         }
-
-        squareBlack.classList.toggle("square-black_hidden_js");
-        squareBlack.style.top = e.clientY + "px";
-        squareBlack.style.left = e.clientX + "px";
+        else if (squareBlack) {
+            squareBlack.classList.toggle("square-black_hidden_js");
+            squareBlack.style.top = e.clientY + "px";
+            squareBlack.style.left = e.clientX + "px";
+        } 
     }
     squareBlack = document.getElementsByClassName("square-black_js")[0];
 
@@ -145,10 +110,14 @@ function dz6Tasc3() {
         if (!triangle) {
             createElements("div", "triangle_js", 1);
             triangle = document.getElementsByClassName("triangle_js")[0];
+            triangle.style.top = positionContextMenuY;
+            triangle.style.left = positionContextMenuX;
         }
-        triangle.style.top = e.clientY + "px";
-        triangle.style.left = e.clientX + "px";
-        triangle.classList.toggle("triangle_hidden_js");
+        else if (triangle) {
+            triangle.classList.toggle("triangle_hidden_js");
+            triangle.style.left = e.clientX + "px";
+            triangle.style.top = e.clientY + "px";
+        }
     }
 
     // Анимация квадрата, аргументы (предмет,сколько раз повторить цикл)
@@ -170,16 +139,16 @@ function dz6Tasc3() {
     }
     // Анимация треугольника 
     function leftRightTriangle(e) {
-        var x = e.clientX;
-        x = x - ((x / 100) * 70);
-        while (x >= 100) {
-            x--;
-        }
-        while (x <= 50) {
-            x++;
-        }
+        // var x = e.clientX;
+        // x = x - ((x / 100) * 70);
+        // while (x >= 100) {
+        //     x--;
+        // }
+        // while (x <= 50) {
+        //     x++;
+        // }
         triangle.style.transition = "1s";
-        triangle.style.transform = `translate(-${x}px,-50%)`;
+        triangle.style.left = e.clientX + "px";
     }
 
     // почистить поле

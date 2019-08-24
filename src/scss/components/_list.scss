@@ -1,0 +1,80 @@
+.list {
+  background: rgb(10, 0, 0);
+  padding: 200px 0;
+  &__block {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 20px;
+  }
+  &__card {
+    grid-column: 2/10;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 400px;
+    max-height: 700px;
+    border-radius: 20px;
+    background: rgba(27, 62, 177, 0.329);
+  }
+  &__item {
+    display: flex;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    color: wheat;
+    width: 100%;
+    min-height: 50px;
+    margin-top: 10px;
+    padding: 20px;
+    transition: 0.2s;
+    background: rgba(5, 95, 32, 0.342);
+    &:hover {
+      background: rgba(5, 95, 32, 0.671);
+    }
+  }
+  &__input {
+    border: none;
+    user-select: none;
+    transition: 1s;
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px 30px;
+    color: rgb(35, 24, 41);
+    background: #fff;
+  }
+  &__input_invalid_js {
+    background: rgb(245, 174, 174);
+  }
+  &__button {
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    transition: 1s;
+    // border-radius: 20px;
+    font-weight: bold;
+    user-select: none;
+    color: rgb(133, 133, 133);
+    background: rgba(12, 11, 11, 0.692);
+    &:active {
+      background: rgb(112, 112, 112);
+      color: black;
+    }
+  }
+  &__instruction {
+    grid-column: 2/10;
+    margin-bottom: 5px;
+    color: wheat;
+    &_item {
+      &:nth-child(2) {
+        font-size: 10;
+        text-decoration: line-through;
+      }
+    }
+  }
+}

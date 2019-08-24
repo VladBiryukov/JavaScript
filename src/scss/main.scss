@@ -1,0 +1,12 @@
+//Импорт общих стилей
+@import "./components/common";
+
+//Импорт стилей страниц
+@import "./pages/index";
+
+//Импорт компонентов для страниц
+@import "./components/header";
+@import "./components/footer";
+@import "./components/context-menu";
+@import "./components/list";
+@import "./components/temperature";

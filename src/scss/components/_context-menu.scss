@@ -1,0 +1,63 @@
+///////контекстное меню
+
+.context-menu_js {
+  z-index: 10;
+  position: absolute;
+  width: 200px;
+  background: rgba(42, 20, 95, 0.247);
+  display: none;
+}
+.context-menu__item_js {
+  border: 1px solid rgba(56, 55, 58, 0.247);
+  padding: 10px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: 1s;
+  &:hover {
+    background: rgba(43, 20, 95, 0.445);
+  }
+}
+
+// квадрат
+.square-black_js {
+  z-index: 2;
+  cursor: pointer;
+  transition: all 1s cubic-bezier(0.74, 0.51, 0.04, 0.35);
+  position: absolute;
+  display: block;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.61);
+  width: 100px;
+  height: 100px;
+}
+.square-black_hidden_js {
+  display: none;
+}
+
+// трегольник
+.triangle_js {
+  z-index: 3;
+  cursor: pointer;
+  transition: 0.5s;
+  top: 100px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  overflow: hidden;
+  height: 80px;
+  width: 150px;
+  &::before {
+    position: absolute;
+    content: "";
+    box-shadow: -4px -4px 6px -2px rgba(0, 0, 0, 0.32);
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    transform: rotate(45deg);
+    width: 100px;
+    height: 100px;
+    background: orange;
+  }
+}
+.triangle_hidden_js {
+  display: none;
+}

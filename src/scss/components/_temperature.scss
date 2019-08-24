@@ -1,0 +1,51 @@
+.temperature {
+  transition: 2s;
+  background: rgb(197, 180, 25);
+  color: rgb(150, 66, 17);
+  &__block { 
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+  }
+  &__input {
+    box-shadow:-1px -4px 7px 0px rgba(240,240,240,1);
+    grid-column: 2/7;
+    width: 300px;
+    border-radius: 5px;
+    padding: 5px 20px;
+    user-select: none;
+    color: rgb(3, 3, 3);
+    background: white;
+    border: none;
+    &_1 {
+      margin-top: 50px;
+    }
+  }
+  &__condition {
+    grid-column: 2/7;
+    margin: 0;
+  }
+  &__resilt {
+    grid-column: 2/7;
+    margin: 0;
+  }
+  &__button {
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 100px;
+    padding: 10px 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 30px;
+    background: rgb(235, 154, 4);
+    user-select: none;
+    transition: 0.3s;
+    &:hover {
+      opacity: 0.9;
+      color: white;
+    }
+    &:active {
+      background: rgb(16, 68, 29);
+      color: rgb(199, 202, 195);
+    }
+  }
+}

@@ -12,7 +12,7 @@ function checkString(check) {
 }
 // проверка на ввод   
 function checkInput(check) {
-    if (check != "" && check != "none" && check != "null" && check != null) return true;
+    if (check != "" && check != " " && check != "none" && check != "null" && check != null) return true;
     else return false;
 }
 // добавляет n количество элементов с class

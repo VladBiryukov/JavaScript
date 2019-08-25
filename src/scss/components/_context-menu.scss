@@ -3,8 +3,8 @@
 .context-menu_js {
   z-index: 10;
   position: absolute;
-  width: 200px;
-  background: rgba(42, 20, 95, 0.247);
+  width: 300px;
+  background: rgba(238, 233, 250, 0.808);
   display: none;
 }
 .context-menu__item_js {
@@ -26,7 +26,7 @@
   position: absolute;
   display: block;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.61);
+  background: rgb(255, 0, 0);
   width: 100px;
   height: 100px;
 }

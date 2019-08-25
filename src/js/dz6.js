@@ -1,4 +1,4 @@
-//  dz6Tasc3() 
+dz6Tasc3()
 function dz6Tasc3() {
     var body = document.body,
         contextMenu = document.getElementsByClassName("context-menu_js")[0],
@@ -33,6 +33,7 @@ function dz6Tasc3() {
         positionContextMenuX = e.clientX + "px";
         return positionContextMenuY, positionContextMenuX, false;
     }
+
     body.addEventListener("click", (e) => {
         if (e.target != contextMenuItem_1 && e.target != contextMenuItem_2 && e.target != contextMenuItem_3 && e.target != contextMenuItem_4 && e.target != contextMenuItem_5) {
             contextMenu.style.display = "none"; // нет времени более правильно делать
@@ -49,7 +50,7 @@ function dz6Tasc3() {
     // №1 добавляет/удаляет квадрат  
     contextMenuItem_1.addEventListener("click", function functionSquare() {
         body.removeEventListener("click", clickAddRemoveTriangle);
-        body.removeEventListener("mouseover", leftRightTriangle);
+        body.removeEventListener("mousemove", leftRightTriangle);
         body.addEventListener("click", clickAddRemoveSquare);
     })
 
@@ -66,7 +67,7 @@ function dz6Tasc3() {
     // №3 Добовить/удалить треугольник
     contextMenuItem_3.addEventListener("click", function functionTriangle() {
         body.removeEventListener("click", clickAddRemoveSquare);
-        body.removeEventListener("mouseover", leftRightTriangle);
+        body.removeEventListener("mousemove", leftRightTriangle);
         body.addEventListener("click", clickAddRemoveTriangle);
     })
 
@@ -138,15 +139,6 @@ function dz6Tasc3() {
     }
     // Анимация треугольника 
     function leftRightTriangle(e) {
-        // var x = e.clientX;
-        // x = x - ((x / 100) * 70);
-        // while (x >= 100) {
-        //     x--;
-        // }
-        // while (x <= 50) {
-        //     x++;
-        // }
-        triangle.style.transition = "1s";
         triangle.style.left = e.clientX + "px";
     }
 

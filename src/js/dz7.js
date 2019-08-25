@@ -1,6 +1,6 @@
-// dz7Task1()
-// dz7Task2()
-// dz7Task3()
+dz7Task1()
+dz7Task2()
+dz7Task3()
 
 
 

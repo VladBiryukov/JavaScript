@@ -1,15 +1,20 @@
 //Импорт общих стилей
 @import "./components/common";
-
+@import "./components/fonts";
+@import "./components/mixins";
+@import "./components/style-text";
 //Импорт стилей страниц
 @import "./pages/index";
 
-//Импорт компонентов для страниц 
+//Импорт компонентов для страниц
 @import "./components/header";
 @import "./components/footer";
+
 @import "./components/context-menu";
 @import "./components/list";
 @import "./components/temperature";
 @import "./components/animation-square";
 @import "./components/slider";
-
+@import "./components/lamp";
+@import "./components/date";
+@import "./components/parallax";

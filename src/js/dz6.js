@@ -1,4 +1,4 @@
-dz6Tasc3()
+// dz6Tasc3()
 function dz6Tasc3() {
     var body = document.body,
         contextMenu = document.getElementsByClassName("context-menu_js")[0],
@@ -35,8 +35,8 @@ function dz6Tasc3() {
     }
 
     body.addEventListener("click", (e) => {
-        if (e.target != contextMenuItem_1 && e.target != contextMenuItem_2 && e.target != contextMenuItem_3 && e.target != contextMenuItem_4 && e.target != contextMenuItem_5) {
-            contextMenu.style.display = "none"; // нет времени более правильно делать
+        if (e.target !=contextMenu) {
+            contextMenu.style.display = "none";
         }
     })
     // ESC

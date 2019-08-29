@@ -2,13 +2,13 @@
   transition: 2s;
   background: rgb(197, 180, 25);
   color: rgb(150, 66, 17);
-  &__block { 
+  &__block {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 20px;
   }
   &__input {
-    box-shadow:-1px -4px 7px 0px rgba(240,240,240,1);
+    box-shadow: -1px -4px 7px 0px rgba(240, 240, 240, 1);
     grid-column: 2/7;
     width: 300px;
     border-radius: 5px;

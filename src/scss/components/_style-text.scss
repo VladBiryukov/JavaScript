@@ -1,0 +1,5 @@
+.title_h2 {
+  @include style_t(36, 36);
+  font-weight: normal;
+  font-family: $FF-bebas;
+}

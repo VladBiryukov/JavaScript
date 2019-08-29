@@ -21,44 +21,4 @@
 // })
 
 
-
-// var buttonSlider_1 = document.getElementsByClassName("slider__button_js")[0];
-// var buttonSlider_2 = document.getElementsByClassName("slider__button_js")[1];
-// var sliderLine = document.getElementsByClassName("slider__line_js")[0];
-// var a = 0;
-// var b;
-// var body = document.body;
-// var position = 0;
-// function sideRLef() {
-//     sliderLine.style.left = `${position + 100}px`;
-//     position = +100;
-//     return position;
-// }
-// function sideRig() {
-//     sliderLine.style.left = `${a - 100}px`;
-//     position = a;
-//     a -= 100;
-//     return position;
-// }
-// // buttonSlider_2.onclick = sideRig;
-
-// body.addEventListener("keydown", function (e) {
-//     console.log(e.keyCode);
-//     if (e.keyCode == 37) {
-//         sideRig();
-//     }
-//     else if (e.keyCode == 39) {
-//         sideRLef();
-//     }
-// })
-
-
-
-
-
-// buttonSlider_2.addEventListener("click", () => {
-//     sliderLine.style.left = `${position - 100}px`;
-
-//     position -= 100
-//     return position
-// })
+ 

@@ -1,8 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap");
 $FFBethEllen: "Beth Ellen";
+$FF-Open-Sans: "Open Sans Condensed";
+$FF-bebas: "Bebas Neue";
+$FF-robo: "Roboto";
+// color
+$blue: #3590cc;
+$gray: #9c9c9c;
+$white: #ffffff;
+$black: #000000;
+// bg
+$bg_gray: #f1f1f1;
 .wrap {
   overflow: hidden;
-  // background: rgb(10, 0, 0);
 }
 
 .container {

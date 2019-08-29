@@ -1,0 +1,28 @@
+.date {
+  background: $bg_gray;
+  &__block {
+    padding: 50px 0;
+  }
+  &__input {
+    border: 1px gray solid;
+    height: 50px;
+    width: 300px;
+    text-align: center;
+    margin: 50px 0;
+    transition: 1s;
+  }
+  &__input_invalid_js {
+    background: rgba(255, 45, 45, 0.164);
+  }
+  &__button {
+    @include button;
+    margin: 20px 0;
+  }
+  &__desc {
+    @include style_t(24, 28);
+    font-family: $FF-robo;
+  }
+  &__result {
+    font-weight: 500;
+  }
+}

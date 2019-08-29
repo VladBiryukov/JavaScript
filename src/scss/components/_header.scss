@@ -1,1 +1,47 @@
- 
+.header {
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    padding: 26px 0;
+  }
+  &__box-logo {
+    display: flex;
+  }
+  &__desc-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 13px;
+  }
+  &__name {
+    font-weight: normal;
+    font-family: $FF-bebas;
+    margin: 0;
+    &-academy {
+      @include style_t(25, 25);
+      margin-bottom: 3px;
+    }
+    &-course {
+      @include style_t(19, 19);
+    }
+  }
+  &__nav {
+    width: 50%;
+    text-align: right;
+  }
+  &__link {
+    @include style_t(16, 22);
+    color: $black;
+    font-family: $FF-Open-Sans;
+    white-space: nowrap;
+    &:hover {
+      color: $black;
+    }
+  }
+  &__img-logo {
+    background: url("./img/logo-DL.png");
+    width: 86px;
+    height: 68px;
+    background-size: cover;
+  }
+}

@@ -1,0 +1,33 @@
+.lamp {
+  transition: 1s;
+  &__block {
+    padding: 65px 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+  }
+  &__title {
+    grid-column: 1/13;
+  }
+  &__img-lamp {
+    width: 75px;
+    height: 80px;
+    cursor: pointer;
+    transition: 0.3s;
+    &_black {
+      grid-column: 1/2;
+      background: url("./img/lamp-black.png");
+      background-size: 75px 78px;
+    }
+    &_yellow {
+      grid-column: 2/3;
+      background: url("./img/lamp-yellow.png");
+      background-size: 75px 78px;
+    }
+    &_blue {
+      grid-column: 3/4;
+      background: url("./img/lamp-blue.png");
+      background-size: 75px 78px;
+    }
+  }
+}

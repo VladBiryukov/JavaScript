@@ -1,0 +1,22 @@
+@mixin style_t($font-size, $line-height) {
+  font-size: $font-size + px;
+  line-height: $line-height + px;
+}
+@mixin button {
+  background: orange;
+  width: 200px;
+  transition: 0.3s;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  color: rgb(43, 30, 2);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  user-select: none;
+  cursor: pointer;
+  &:active {
+    background: rgb(151, 88, 5);
+    color: rgb(196, 194, 194);
+  }
+}

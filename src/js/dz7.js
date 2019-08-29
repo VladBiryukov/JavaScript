@@ -1,6 +1,6 @@
-dz7Task1()
-dz7Task2()
-dz7Task3()
+// dz7Task1()
+// dz7Task2()
+// dz7Task3()
 
 
 
@@ -46,34 +46,36 @@ function dz7Task1() {
                     inputlist.value = "";
                 }, 200)
             })
-
             // внести изменения
-            newListItem.onclick = function changeListItem() {
-                setTimeout(function () {
-                    inputlist.value = newListItem.innerHTML;
-                    buttonList.innerHTML = "сохранить изменения";
-                }, 100)
+            newListItem.addEventListener("click", function changeListItem() {
+                if (inputlist.value != newListItem.innerHTML) {
+                    setTimeout(function () {
+                        inputlist.value = newListItem.innerHTML;
+                        buttonList.innerHTML = "сохранить изменения";
+                    }, 50)
 
-                // сохраняет изменения
-                buttonList.addEventListener("click", saveСhanges)
-                body.addEventListener("keydown", function keySaveСhanges(key) {
-                    if (key.keyCode == 13) {
-                        saveСhanges();
-                        body.removeEventListener("keydown", keySaveСhanges);
+                    // сохраняет изменения
+                    buttonList.addEventListener("click", saveСhanges)
+                    body.onkeydown = function keySaveСhanges(key) {
+                        if (key.keyCode == 13) {
+                            saveСhanges();
+                        }
                     }
-                })
-                function saveСhanges() {
-                    newListItem.innerHTML = inputlist.value;
-                    inputlist.value = "";
-                    buttonList.innerHTML = "новая запись";
-                    buttonList.removeEventListener("click", saveСhanges);
+                    function saveСhanges() {
+                        var clone = newListItem.innerHTML;
+                        if (inputlist.value != "") clone = inputlist.value;
+                        inputlist.value = "";
+                        buttonList.innerHTML = "новая запись";
+                        buttonList.removeEventListener("click", saveСhanges);
+                        return newListItem.innerHTML = clone;
+                    }
                 }
-            }
+            })
         }
     }
 }
 
-
+ 
 
 function dz7Task2() {
     var body = document.body,
@@ -85,7 +87,6 @@ function dz7Task2() {
         result,
         bgTemper = ["rgb(5, 106, 189)", "rgb(166, 190, 29)", "rgb(255, 38, 0)", "rgb(197, 180, 25)"],
         colorTemper = ["rgb(61, 36, 172)", "#fff", "rgb(150, 66, 17)"];
-
 
     function updateInput() {
         // знаю что не правильно, тут я просто практиковался с setInterval

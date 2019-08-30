@@ -1,4 +1,4 @@
-// dz6Tasc3()
+dz6Tasc3()
 function dz6Tasc3() {
     var body = document.body,
         contextMenu = document.getElementsByClassName("context-menu_js")[0],
@@ -58,7 +58,7 @@ function dz6Tasc3() {
     contextMenuItem_2.addEventListener("click", function bounce() {
         body.removeEventListener("click", clickAddRemoveSquare);
         body.removeEventListener("click", clickAddRemoveTriangle);
-
+        body.removeEventListener("mousemove", leftRightTriangle);
         if (squareBlack && squareBlack.classList == "square-black_js") {
             animationTopBottomSquare(squareBlack, 3);
         }

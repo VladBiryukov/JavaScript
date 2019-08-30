@@ -213,7 +213,7 @@ function date() {
          function dateTimer() {
             var dateToday = new Date();
             var number = 60;
-            var dateCurrent = new Date(`${arrDate[2]}/${arrDate[1]}/${arrDate[0]}`);
+            var dateCurrent = new Date(`${arrDate[1]}/${arrDate[2]}/${arrDate[0]}`);
             var clone = Math.ceil((dateCurrent - dateToday) / 1000);
             var days = Math.floor(clone / (number * number * 24));
             clone = clone % (number * number * 24);
@@ -237,7 +237,7 @@ function date() {
                return idInterval;
             }
             else {
-               //поругаться немного)
+               //поругаться немного:)
                dateResult.innerHTML = "";
                var a = 0;
                for (let i = 0; i < 6; i++) {
@@ -268,23 +268,41 @@ function date() {
 function parallax() {
 
    var imgParallax = document.getElementsByClassName("parallax__img_js")[0],
-      position = 0;
+      parallaxOverlay = document.getElementsByClassName("parallax__overlay_js")[0],
+      position = 0,
+
+      arBackground = [
+         "rgba(196, 196, 196, 0)",
+         "rgba(196, 196, 196, 0.7)"
+      ];
 
    body.addEventListener("mousewheel", function (e) {
       if (e.wheelDelta == -120) {
-         if (position != -60) {
-            position = position - 10
-            imgParallax.style.transform = `translateY(${position}px)`
-            return position
-         }
-      }
-      else if (e.wheelDelta == 120) {
          if (position != 80) {
             position = position + 10
             imgParallax.style.transform = `translateY(${position}px)`
             return position
          }
       }
+      else if (e.wheelDelta == 120) {
+         if (position != -60) {
+            position = position - 10
+            imgParallax.style.transform = `translateY(${position}px)`
+            return position
+         }
+      }
    })
+
+   parallaxOverlay.addEventListener("mouseover", () => {
+      imgParallax.style.transition = "5s"
+      imgParallax.style.transform = "scale(1.1)"
+      parallaxOverlay.style.background = arBackground[0]
+   })
+
+   parallaxOverlay.addEventListener("mouseout", () => {
+      imgParallax.style.transition = "1.5s"
+      imgParallax.style.transform = "scale(1)"
+      parallaxOverlay.style.background = arBackground[1]
+   })
+
 }
- 

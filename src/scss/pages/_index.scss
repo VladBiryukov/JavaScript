@@ -1,1 +1,27 @@
- 
+.input-text {
+  border: none;
+  width: 400px;
+  border-radius: 5px;
+  background: wheat;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.button {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.button-black {
+  margin: 10px auto;
+  color: wheat;
+}
+.container_js {
+  border: 1px solid black;
+  width: 500px;
+  height: 200px;
+}

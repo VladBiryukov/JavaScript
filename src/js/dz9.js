@@ -108,7 +108,7 @@ function dz9Task3() {
 function checkTel() {
    const input = document.getElementsByClassName("number-tel__input_js")[0],
       result = document.getElementsByClassName("number-tel__tesult_js")[0];
-   var regExpMTC = RegExp(/^(8)(910|915|916|919)[\d{7}]{6}\d$|^\+(7)(910|915|916|919)[\d{7}]{6}\d$/),
+   var regExpMTC = RegExp(/^(8)(910|987|915|916|919)[\d{7}]{6}\d$|^\+(7)(910|987|915|916|919)[\d{7}]{6}\d$/),
       regExpMegafon = RegExp(/^(8)(929|925|926)[\d{7}]{6}\d$|^\+(7)(929|925|926)[\d{7}]{6}\d$/),
       regExpBeeline = RegExp(/^(8)(903|905|906|909|961|962|963|964|695)[\d{7}]{6}\d$|^\+(7)(903|905|906|909|961|962|963|964|695)[\d{7}]{6}\d$/),
       clone = "";

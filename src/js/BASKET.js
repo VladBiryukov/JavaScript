@@ -1,100 +1,90 @@
-// var button = document.getElementsByClassName("button_js")[0]
-// var button1 = document.getElementsByClassName("button_js")[1]
-// var container = document.getElementsByClassName("container_js")[0]
-// var input = document.getElementsByClassName("input-text_js")[0]
-// var input2 = document.getElementsByClassName("input-text_js")[1]
-
-// var arr = []
-
-
-// button.addEventListener("click", (event) => {
-//     // input.value;  
-    // var reg = new RegExp(".\s\w", "gi")
-    // console.log(`${input.value}`.replace(/`${input.value}`/gi, "")), container.innerHTML += `${input.value}`.replace(/ /g, "");
-    // console.log(`${input.value}`.replace(/`${input.value}`/gi, "")), container.innerHTML += `${input.value}`.replace(/ /g, "");
-
-    // var reg = new RegExp(input.nodeValue, 'gi')
-
-// })
 
 
 
-// function returnTest(str, ) {
-//     var reg = new RegExp("", "g");
-//     return str.replace(reg, function () {
-//         return ""
-//     })
+
+// function num(n, s) {
+//     s = s | 2
+//     return console.log(Math.pow(n, s));
+// }
+// num(3, 2)
+
+
+
+
+// (function () {
+//     var user = {
+//         name: "qwe",
+//         sName: "QWE"
+//     }
+//     console.log(user.name);
+
+// })();
+
+// (function () {
+//     var user = {
+//         name: "asd",
+//         sName: "ASD"
+//     }
+//     console.log(user.name);
+
+// })()
+
+// var user = {
+//     name: "asd",
+//     sName: "ASD"
 // }
 
 
+// var name1 = (n, s = 2) => Math.pow(n, s);
+// console.log(name1(2, 3));
 
 
-/** без пробелов
- * @description(megafon) ^(8)(92)\d{8}|^\ +(792)\d{8}
- * @description(mts) ^
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- */
+// var user = {
+//     name: "Name",
+//     sName: "ASD",
+//     getNameF: () => {
+//         return this.name
+//     },
+//     getNameS: () => {
+//         return this
+//     },
+//     getUserS: () => this
+
+// }
+// var user = {
+//     name: "Name",
+//     getNameF: function () {
+//         return this.name;
+//     },
+//     getNameS: () => this.name,
+//     getUserF: function () {
+//         return this;
+//     },
+//     getUserS: () => this
+// }
+
+// console.log(user.getNameF());
+
+function getName() {
+    this.name
+}
+
+
+var shop1 = {
+    name: "awda",
+    getName: () => {
+        return this.name
+    },
+    getName: getName
+}
+// var shop2 = {
+//     name: "",
+//     getName: () => name
+// }
+
+var b = getName.bind(shop1.getName())
+console.log(shop1.getName());
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // alert(JSON.stringify(user))
-
-// arr = [{ "name": "sasha", "email": "zoro@qwe.qwe", "sname": "sname", "tel": "+70000000000" }, { "name": "max2", "email": "zoro@qwe.qwe2", "sname": "sname2" }]
-// // console.log(arr[0]);
-// // Object.assign({}, arr)
-// // console.log(arr);
-
-// button1.addEventListener("click", (event) => {
-//     // var clone = arr[0]
-//     // for (let i = 0; i < test.length; i++) {
-//     // console.log(clone);
-//     for (var key in arr) {
-//         var clone = arr[key]
-
-//         // container.innerHTML = container.innerHTML + clone
-//     }
-//     // container.innerHTML +=
-
-//     // }
-// })

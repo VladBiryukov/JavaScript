@@ -318,7 +318,7 @@ function parallax() {
       ];
 
    document.addEventListener("scroll", function (e) {
-      imgParallax.style.transform = `translateY(${window.pageYOffset / 15}px)`;
+      imgParallax.style.transform = `translateY(${window.pageYOffset / 10}px)`;
    })
 
    parallaxOverlay.addEventListener("mouseover", () => {

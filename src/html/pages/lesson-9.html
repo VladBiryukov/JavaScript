@@ -10,18 +10,63 @@
 </head>
 
 <body>
-  <div class="wrap">
+  <div class="wrap wrap_js">
     @@include('./../components/header.html')
-    <div class="box">
-        <input class="input-text input-text_js" placeholder="text" type="text">
+
+    <!-- <div class="box">
+      <input class="input-text input-text_js" placeholder="text" type="text">
       <input class="input-text input-text_js" placeholder="text" type="text">
       <div class="button-black button button_js">button</div>
       <div class="button-black button button_js">button1</div>
       <div class="container_js"></div>
+    </div> -->
+
+    <div class="users">
+      <div class="container">
+        <div class="users__block">
+          <div class="users__container-card users__container-card_js">
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="sum-number">
+      <div class="container">
+        <div class="sum-number_block">
+          <input placeholder="Ищет числа и суммирует их" class="sum-number__input sum-number__input_js input">
+          <p class="sum-number__result sum-number__result_js">Результат:</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="number-tel">
+      <div class="container">
+        <div class="number-tel__block">
+          <input placeholder="tel" type="text" class="number-tel__input number-tel__input_js input">
+          <p class="number-tel__tesult number-tel__tesult_js ">Сотовый оператор: </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sum-number-v-2">
+      <div class="container">
+        <div class="sum-number-v-2_block">
+          <input placeholder="Введите число и нажмите ENTER"
+            class="sum-number-v-2__input sum-number-v-2__input_js input">
+          <div class="sum-number-v-2__button"></div>
+          <p class="sum-number-v-2__result sum-number-v-2__result_js">Результат:</p>
+        </div>
+      </div>
+    </div>
+
 
   </div>
 </body>
+
+
+<script src="instruments.js"></script>
 <script src="BASKET.js"></script>
+<script src="dz9.js"></script>
 
 </html>

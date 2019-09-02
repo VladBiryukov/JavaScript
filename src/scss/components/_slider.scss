@@ -22,7 +22,7 @@
     user-select: none;
     z-index: 1;
     display: flex;
-    width: 300%;
+    // width: 300%;
     transition: 0.7s;
     transition-timing-function: cubic-bezier(0.5, 0.07, 0.2, 0.88);
   }
@@ -30,7 +30,7 @@
   &__item {
     background-size: cover;
     background-repeat: no-repeat;
-    width: 33.333333333333336%;
+    // width: 33.333333333333336%;
     transform: translateX(0%);
   }
 
@@ -68,13 +68,12 @@
     margin-top: 25px;
   }
   &__bullet {
+    cursor: pointer;
     transition: 0.3s;
     background: $gray;
     height: 6px;
     width: 6px;
     border-radius: 50%;
-    &:nth-child(2) {
-      margin: 0 5px;
-    }
+    margin: 0 2px;
   }
 }

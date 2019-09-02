@@ -1,4 +1,3 @@
-
 var body = document.body;
 
 slider();
@@ -10,29 +9,48 @@ function slider() {
    var sliderLine = document.getElementsByClassName("slider__line_js")[0],
       sliderСontrolLeft = document.getElementsByClassName("slider__control_js")[0],
       sliderСontrolRight = document.getElementsByClassName("slider__control_js")[1],
-      sliderBullet_1 = document.getElementsByClassName("slider__bullet_js")[0],
-      sliderBullet_2 = document.getElementsByClassName("slider__bullet_js")[1],
-      sliderBullet_3 = document.getElementsByClassName("slider__bullet_js")[2],
-
+      sliderItem = document.querySelectorAll(".slider__item_js"),
+      sliderBoxBullet = document.getElementsByClassName("slider__box-bullet_js")[0],
       // вспомогательные переменные
+      quantityItem = sliderItem.length,
+      maxPosition = quantityItem,
       position = 0,
       coordinates = 0,
-      valueWidth = 33.333333333333336,
-      maxValueWidth = -66.6666666666666,
+      valueWidth = 100 / quantityItem,
+      maxValueWidth = 0 - ((100 / quantityItem) * 2),
 
       color = [
          "#9c9c9c", // Gray
          "#3590cc", // Blue
       ];
 
-   // стили по дэфолту
-   sliderBullet_1.style.background = color[1];
+
+   // Стили по дэфолту
+
+   // Создаём були, колечество булек = количество слайдов
+   for (let index = 0; index < quantityItem; index++) {
+      let newBullet = document.createElement("div");
+      newBullet.classList.add("slider__bullet", "slider__bullet_js")
+      sliderBoxBullet.insertAdjacentElement("beforeend", newBullet);
+   }
+   const sliderBullet = document.querySelectorAll(".slider__bullet_js");
+
+
+
+   // Перебираем все слайды и устонавливаем им ширину
+   for (let i = 0; i < sliderItem.length; i++) {
+      sliderItem[i].style.width = `${valueWidth}%`;
+   }
+   // Ширина линии = количество 100* количество слайдов
+   sliderLine.style.width = `${100 * quantityItem}%`;
+
+   sliderBullet[0].style.background = color[1];
    sliderСontrolLeft.style.opacity = "0.5";
    sliderСontrolLeft.style.cursor = "auto";
 
    sliderСontrolLeft.addEventListener("click", slideBack);
    sliderСontrolRight.addEventListener("click", slideForward);
-   sliderLine.addEventListener("click", slideForward)
+   sliderLine.addEventListener("click", slideForward);
 
    body.addEventListener("keydown", (e) => {
       if (e.keyCode == 39) {
@@ -43,54 +61,78 @@ function slider() {
       }
    })
 
-   // назад
+   // Назад
    function slideBack() {
       if (coordinates < 0) {
          sliderLine.style.transform = `translateX(${coordinates + valueWidth}%)`;
          coordinates = coordinates + valueWidth;
+
          colorBullet();
          if (sliderLine.style.transform == `translateX(0%)`) {
             sliderСontrolLeft.style.opacity = "0.5";
             sliderСontrolLeft.style.cursor = "auto";
          }
-         return coordinates, position;
+         return coordinates;
       }
    }
-   // вперёд 
+   // Вперёд 
    function slideForward() {
-      if (coordinates >= maxValueWidth) {
+      if (maxPosition != position + 1) {
          sliderLine.style.transform = `translateX(${coordinates - valueWidth}%)`;
+         position++;
          coordinates = coordinates - valueWidth;
          colorBullet();
          sliderСontrolLeft.style.opacity = "1";
          sliderСontrolLeft.style.cursor = "pointer";
-         return coordinates;
+         return coordinates, position;
       }
       else {
          sliderLine.style.transform = `translateX(0%)`;
          coordinates = 0;
+         position = 0;
          sliderСontrolLeft.style.opacity = "0.5";
          sliderСontrolLeft.style.cursor = "auto";
          colorBullet();
-         return coordinates;
+         return coordinates, position;
       }
    }
-   // цвет були
+   // Цвет були
+   // Перебирает все були и красит их
+   // В зависимости от позиции  слайда красит одну бульку в синий цвет
+
    function colorBullet() {
-      if (coordinates == 0) {
-         sliderBullet_1.style.background = color[1];
-         sliderBullet_2.style.background = color[0];
-         sliderBullet_3.style.background = color[0];
+      for (let i = 0; i < quantityItem; i++) {
+         if (coordinates == 0 - ((100 / quantityItem) * i)) {
+            for (let i = 0; i < sliderBullet.length; i++) {
+               sliderBullet[i].style.background = color[0];
+            }
+            sliderBullet[i].style.background = color[1];
+            position = i;
+            return position;
+         }
       }
-      else if (coordinates == -33.333333333333336) {
-         sliderBullet_1.style.background = color[0];
-         sliderBullet_2.style.background = color[1];
-         sliderBullet_3.style.background = color[0];
+   }
+
+   // Перебирает все були и присваит им событие onclick
+   // При нажатии на булю меняется позиция слайда
+   for (let i = 0; i < quantityItem; i++) {
+      if (sliderBullet[i]) {
+         sliderBullet[i].onclick = function () {
+            sliderLine.style.transform = `translateX(${0 - ((100 / quantityItem) * i)}%)`;
+            coordinates = 0 - ((100 / quantityItem) * i);
+            sliderСontrolLeft.style.opacity = "1";
+            colorBullet();
+            return coordinates;
+         }
       }
-      else if (coordinates == -66.66666666666667) {
-         sliderBullet_1.style.background = color[0];
-         sliderBullet_2.style.background = color[0];
-         sliderBullet_3.style.background = color[1];
+      if (sliderBullet[0]) {
+         sliderBullet[0].onclick = function () {
+            sliderLine.style.transform = `translateX(${0 - ((100 / quantityItem) * 0)}%)`;
+            coordinates = 0 - ((100 / quantityItem) * 0);
+            sliderСontrolLeft.style.opacity = "0.5";
+            colorBullet();
+            return coordinates;
+         }
       }
    }
 }
@@ -269,40 +311,42 @@ function parallax() {
 
    var imgParallax = document.getElementsByClassName("parallax__img_js")[0],
       parallaxOverlay = document.getElementsByClassName("parallax__overlay_js")[0],
-      position = 0,
 
       arBackground = [
          "rgba(196, 196, 196, 0)",
          "rgba(196, 196, 196, 0.7)"
       ];
 
-   body.addEventListener("mousewheel", function (e) {
-      if (e.wheelDelta == -120) {
-         if (position != 80) {
-            position = position + 10
-            imgParallax.style.transform = `translateY(${position}px)`
-            return position
-         }
-      }
-      else if (e.wheelDelta == 120) {
-         if (position != -60) {
-            position = position - 10
-            imgParallax.style.transform = `translateY(${position}px)`
-            return position
-         }
-      }
+   document.addEventListener("scroll", function (e) {
+      imgParallax.style.transform = `translateY(${window.pageYOffset / 15}px)`;
    })
 
    parallaxOverlay.addEventListener("mouseover", () => {
-      imgParallax.style.transition = "5s"
-      imgParallax.style.transform = "scale(1.1)"
-      parallaxOverlay.style.background = arBackground[0]
+      imgParallax.style.transform = "scale(1.1)";
+      parallaxOverlay.style.background = arBackground[0];
    })
 
    parallaxOverlay.addEventListener("mouseout", () => {
-      imgParallax.style.transition = "1.5s"
-      imgParallax.style.transform = "scale(1)"
-      parallaxOverlay.style.background = arBackground[1]
+      imgParallax.style.transform = "scale(1)";
+      parallaxOverlay.style.background = arBackground[1];
    })
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

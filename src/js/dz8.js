@@ -6,13 +6,14 @@ date()
 parallax()
 
 function slider() {
-   var sliderLine = document.getElementsByClassName("slider__line_js")[0],
+   const sliderLine = document.getElementsByClassName("slider__line_js")[0],
       sliderСontrolLeft = document.getElementsByClassName("slider__control_js")[0],
       sliderСontrolRight = document.getElementsByClassName("slider__control_js")[1],
       sliderItem = document.querySelectorAll(".slider__item_js"),
-      sliderBoxBullet = document.getElementsByClassName("slider__box-bullet_js")[0],
-      // вспомогательные переменные
-      quantityItem = sliderItem.length,
+      sliderBoxBullet = document.getElementsByClassName("slider__box-bullet_js")[0];
+
+   // вспомогательные переменные
+   var quantityItem = sliderItem.length,
       maxPosition = quantityItem,
       position = 0,
       coordinates = 0,
@@ -41,7 +42,7 @@ function slider() {
    for (let i = 0; i < sliderItem.length; i++) {
       sliderItem[i].style.width = `${valueWidth}%`;
    }
-   // Ширина линии = количество 100* количество слайдов
+   // Ширина линии =  100 * количество слайдов
    sliderLine.style.width = `${100 * quantityItem}%`;
 
    sliderBullet[0].style.background = color[1];
@@ -316,19 +317,25 @@ function parallax() {
          "rgba(196, 196, 196, 0)",
          "rgba(196, 196, 196, 0.7)"
       ];
-
+   // просто параллакс эфект, ничего лешнего
    document.addEventListener("scroll", function (e) {
       imgParallax.style.transform = `translateY(${window.pageYOffset / 10}px)`;
    })
 
    parallaxOverlay.addEventListener("mouseover", () => {
+      imgParallax.style.transition = "2s"
       imgParallax.style.transform = "scale(1.1)";
       parallaxOverlay.style.background = arBackground[0];
    })
 
    parallaxOverlay.addEventListener("mouseout", () => {
+
+
       imgParallax.style.transform = "scale(1)";
       parallaxOverlay.style.background = arBackground[1];
+      setTimeout(() => {
+         imgParallax.style.transition = "0s"
+      }, 2000)
    })
 
 }

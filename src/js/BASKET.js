@@ -65,25 +65,25 @@
 
 // console.log(user.getNameF());
 
-function getName() {
-    this.name
-}
-
-
-var shop1 = {
-    name: "awda",
-    getName: () => {
-        return this.name
-    },
-    getName: getName
-}
-// var shop2 = {
-//     name: "",
-//     getName: () => name
+// function getName() {
+//     this.name
 // }
 
-var b = getName.bind(shop1.getName())
-console.log(shop1.getName());
+
+// var shop1 = {
+//     name: "awda",
+//     getName: () => {
+//         return this.name
+//     },
+//     getName: getName
+// }
+// // var shop2 = {
+// //     name: "",
+// //     getName: () => name
+// // }
+
+// var b = getName.bind(shop1.getName())
+// console.log(shop1.getName());
 
 
 

@@ -115,7 +115,7 @@ function checkTel() {
    /**
     * 
     * @param { String }   принимает название оператора в ""
-    * @param { String }   принимает строку которую нужно проверить
+    * @param { String }   принимает строку которую нужно проверить, начинает проверку с начала строки
     * @return false||true в зависимости есть ли совпадение с номером оператора 
     */
    function chechMobileOperator(operator, element) {
@@ -168,6 +168,7 @@ function checkTel() {
 function dz9Animation() {
    const input = document.getElementsByClassName("sum-number-v-2__input_js")[0],
       result = document.getElementsByClassName("sum-number-v-2__result_js")[0];
+
    var summ,
       cloneInputValue = "",
       arrNumber = [];
@@ -191,8 +192,6 @@ function dz9Animation() {
             if (e.keyCode == 13) {
 
                arrNumber.push(input.value);
-               input.value = "";
-
                sumNumberInput(arrNumber);
 
                let numberAnimation = document.createElement("div");
@@ -207,12 +206,11 @@ function dz9Animation() {
                }, 7)
                setTimeout(function name() {
                   clearInterval(idInterval);
+                  input.value = "";
                   numberAnimation.remove();
                   result.innerHTML = `Результат: ${summ}`;
                   cloneInputValue = "";
                }, 300)
-
-
             }
          }
       }, 1)

@@ -61,8 +61,6 @@ function dz9Task1() {
 }
 
 
-
-
 function dz9Task3() {
    const input = document.getElementsByClassName("sum-number__input_js")[0],
       result = document.getElementsByClassName("sum-number__result_js")[0];

@@ -33,7 +33,7 @@ function checkInputStr(input) {
  * @return false||true
  */
 function checkInputSymbols(input) {
-    if (/ *[.|<|>|?|;|:|"|'|`|!|@|#|$|%|^|&|*|(|)|\|[|{|}|_|+|=|,]/.test(input.value)) return true;
+    if (/ *[.|<|>|?|;|:|"|'|`|!|@|#|$|%|^|&|*|(|)|\||/|[|{|}|_|+|=|,]/.test(input.value)) return true;
     else false;
 }
 

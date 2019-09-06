@@ -93,3 +93,91 @@
 // console.log(user.get());
 // console.log(user2.get());
 
+// function loadScript(src, callback) {
+//     var script = document.createElement("script")
+//     script.src = src
+//     script.onload = () => callback(null);
+//     script.onerror = () => callback({ message: "qwe", code: 404 });
+
+//     document.head.append(script)
+// }
+// loadScript("./dz11.js", function (err,pespose) {
+//     if (err) {
+//         console.log("err");
+
+//     }
+//     else {
+//         console.log(user);
+//         console.log(user.name);
+
+//     }
+
+// });
+
+
+// console.log(user.name);
+
+// var loadScript = new Promise(function (resolve, reject) {
+//     var script = document.createElement("script");
+//     script.src = "./dz11.js";
+//     script.onload = () => resolve(user);
+//     script.onerror = () => reject({message: "не нашли файл", code: 404});
+//     document.head.append(script);
+// });
+
+// loadScript
+//     .then(secondPayload => console.log(secondPayload.name))
+//     .catch(err => console.log(err))
+//     .finally(()=> console.log("Промис отработал!"))
+
+
+
+// var loadScript = function (src) {
+//     return new Promise(function (resolve, reject) {
+//         var script = document.createElement('script');
+//         script.src = "./dz11.js"
+//         script.onload = () => resolve("не отработал");
+//         script.onerror = () => reject('error');
+//         document.head.append(script);
+//     });
+// }
+// loadScript('./dz11.js')
+//     .then(payload => payload + "123")
+//     .finally(() => console.log( user.name))
+//     .catch(err => alert(err))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

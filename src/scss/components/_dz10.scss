@@ -1,22 +1,27 @@
 .steam {
+  // display: none;
   &__block {
     padding: 100px 0;
     font-family: "Motiva Sans", Sans-serif;
   }
   &__content {
     user-select: none;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-column-gap: 20px;
+  }
+  &__container {
+    min-height:800px;
+    overflow: hidden;
+    background: #070d1bf1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   &__header {
     background: #070d1bf1;
     display: flex;
-    grid-column: 1/13;
-    border-bottom: 1px solid gray;
+    align-items: center;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     overflow: hidden;
+    max-height: 70px;
   }
   &__box-logo {
     height: 60px;
@@ -31,14 +36,13 @@
   }
   &__box-name-shop {
     @include center();
-
     color: white;
     text-transform: uppercase;
     font-family: "Motiva Sans", Sans-serif;
     font-weight: bold;
     letter-spacing: 1.5px;
     height: 60px;
-    width: 45%;
+    width: 25%;
   }
 
   &__box-search {
@@ -47,63 +51,60 @@
     width: 45%;
   }
   &__search-price {
-    height: 35%;
-    margin: 2px 0;
+    height: 27px;
     border-radius: 4px;
   }
   &__box-search-price {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     width: 20%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
   }
   &__input-search {
     background: linear-gradient(rgba(255, 255, 255, 0.548));
     border: none;
     width: 90%;
-    height: 80%;
+    height: 90%;
     padding: 10px;
     border-radius: 10px;
     position: relative;
-    &::after {
-      position: absolute;
-      content: " fnejfn";
-      border: 1px solid red;
-      width: 10px;
-      height: 10px;
-      top: 10px;
-      left: 10;
-    }
   }
-  &__container {
-    // min-height: 1400px;
-    grid-column: 1/13;
-    overflow: hidden;
-    background: #070d1bf1;
-  }
+
   &__item {
     display: flex;
+    font-size: 20px;
     transition: 0.5s cubic-bezier(0.57, -0.26, 0.25, 0.75);
     color: rgb(139, 133, 133);
     background: #070d1bf1;
-    text-transform: uppercase;
     height: 80px;
-    border-bottom: 1px solid gray;
+    margin: 5px 0;
   }
   &__name {
     display: flex;
     z-index: 1;
     align-items: center;
     padding-left: 20px;
-    width: 45%;
+    width: 35%;
+  }
+  &__avatar {
+    transition: 0.5s;
+    height: 80px;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  &__box-avatar {
+    overflow: hidden;
+    width: 15%;
+    height: 90;
   }
   &__rename {
     border-radius: 10px;
     padding: 10px 0px 10px 10px;
     margin-left: -10;
-    width: 40%;
+    width: 35%;
     z-index: 5;
-    text-transform: uppercase;
     background: #070a11;
     color: rgb(139, 133, 133);
     border: none;
@@ -119,19 +120,29 @@
     text-align: center;
     width: 20%;
     z-index: 5;
-    text-transform: uppercase;
     background: #070a11;
     color: rgb(139, 133, 133);
     border: none;
   }
   &__delete {
+    transition: 0.2s;
     @include center();
     cursor: pointer;
     width: 10%;
+    &:hover {
+      background: rgb(175, 2, 2);
+    }
+    &:hover .close:before {
+      background: black;
+    }
+    &:hover .close:after {
+      background: black;
+    }
   }
 }
 
 .close {
+  transition: 0.2s;
   position: relative;
   width: 32px;
   height: 32px;
@@ -140,6 +151,7 @@
 
 .close:before,
 .close:after {
+  transition: 0.2s;
   position: absolute;
   left: 15px;
   content: " ";
@@ -155,88 +167,118 @@
 }
 
 .hookah {
-  // display: none;
   &__block {
     padding: 100px 0;
     font-family: "Motiva Sans", Sans-serif;
   }
   &__content {
     user-select: none;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 20px;
+    min-height: 500px;
   }
   &__header {
+    background: #000102fd;
     display: flex;
+    align-items: center;
     grid-column: 1/13;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.541);
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     overflow: hidden;
-  }
-  &__box-logo {
-    height: 120px;
-    width: 120px;
+    max-height: 70px;
   }
   &__logo {
     height: 100%;
-    width: 120px;
-    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8FUpBfTwWUf7EzsdOR2JnSw-RPEl-uwOl0iEy_dbWuxQr_s2C");
+    width: 150px;
+    background: url("./img/logo-hookah.jpg");
     background-repeat: no-repeat;
     background-size: cover;
   }
+  &__box-logo {
+    height: 60px;
+    width: 120px;
+  }
+
   &__box-name-shop {
     @include center();
-    background: #000000;
     color: white;
     text-transform: uppercase;
     font-family: "Motiva Sans", Sans-serif;
     font-weight: bold;
     letter-spacing: 1.5px;
-    height: 120px;
-    width: 45%;
+    height: 60px;
+    width: 25%;
   }
+
   &__box-search {
     @include center();
-    height: 120px;
+    height: 60px;
     width: 45%;
-    background: #000000;
+  }
+  &__search-price {
+    height: 27px;
+    border-radius: 4px;
+  }
+  &__box-search-price {
+    width: 20%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
   }
   &__input-search {
     background: linear-gradient(rgba(255, 255, 255, 0.548));
     border: none;
     width: 90%;
-    height: 50%;
+    height: 90%;
     padding: 10px;
     border-radius: 10px;
+    position: relative;
   }
   &__container {
-    grid-column: 1/13;
+    min-height: 500px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     overflow: hidden;
     background: #000000;
   }
   &__item {
     display: flex;
+    font-size: 20px;
     transition: 0.5s cubic-bezier(0.57, -0.26, 0.25, 0.75);
-    color: rgba(255, 255, 255, 0.541);
-    background: #070d1b46;
-    text-transform: uppercase;
-    height: 80px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.815);
+    color: rgb(139, 133, 133);
+    background: #000102fd;
+    // height: 80px;
+    margin: 15px 0;
   }
   &__name {
-    user-select: none;
     display: flex;
+    z-index: 1;
     align-items: center;
     padding-left: 20px;
-    width: 45%;
+    width: 35%;
+  }
+  &__avatar {
+    transition: 0.5s;
+    height: 290;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  &__box-avatar {
+    z-index: 3;
+    overflow: hidden;
+    width: 25%;
+    height: 290;
+    &:hover {
+      background: red;
+    }
   }
   &__rename {
     border-radius: 10px;
-    padding: 10px 0px 10px 50px;
-    width: 40%;
+    padding: 10px 0px 10px 10px;
+    margin-left: -10;
+    width: 35%;
     z-index: 5;
-    text-transform: uppercase;
     background: #070a11;
     color: rgb(139, 133, 133);
     border: none;
@@ -252,14 +294,23 @@
     text-align: center;
     width: 20%;
     z-index: 5;
-    text-transform: uppercase;
     background: #070a11;
     color: rgb(139, 133, 133);
     border: none;
   }
   &__delete {
+    transition: 0.2s;
     @include center();
     cursor: pointer;
     width: 10%;
+    &:hover {
+      background: rgb(90, 0, 0);
+    }
+    &:hover .close:before {
+      background: black;
+    }
+    &:hover .close:after {
+      background: black;
+    }
   }
 }

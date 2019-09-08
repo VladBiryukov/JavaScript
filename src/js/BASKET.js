@@ -185,30 +185,29 @@
 //       document.head.append(script);
 //     });
 //   }
-  
+
 //   (function () {
-  
+
 //     loadScript(`./dz11.8.1.js`)
 //       .then(secondValue => console.log(secondValue + " загружен"))
 //       .catch(err => console.log(err))
 //       .finally(() => console.log("Промис отработал"))
-  
+
 //     loadScript(`./dz11.8.2.js`)
 //       .then(secondValue => console.log(secondValue + " загружен"))
 //       .catch(err => console.log(err))
 //       .finally(() => console.log("Промис отработал"))
-  
+
 //     loadScript(`./dz11.8.3.js`)
 //       .then(secondValue => console.log(secondValue + " загружен"))
 //       .catch(err => console.log(err))
 //       .finally(() => console.log("Промис отработал"))
-  
+
 //     loadScript(`./dz11.8.4.js`)
 //       .then(secondValue => console.log(secondValue + " загружен"))
 //       .catch(err => console.log(err))
 //       .finally(() => console.log("Промис отработал"))
 //   })
-  
 
 
 
@@ -217,6 +216,12 @@
 
 
 
+
+   // item.style.position = "relative";
+   // inputRename.style.position = "absolute";
+   // inputReprice.style.position = "absolute";
+   // avatar.style.backgroundRepeat = "no-repeat";
+   // avatar.style.backgroundSize = "cover";
 
 
 

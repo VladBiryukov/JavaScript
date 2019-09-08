@@ -71,8 +71,7 @@ function searchPrice() {
    const item = document.querySelectorAll(`.${this.name}__item_js`);
 
    let checkRange = (i) => {
-      if (input[0].value <= this.store[i].price && input[1].value >= this.store[i].price) {
-         console.log(this.store[i].price);
+      if (input[0].value <= this.store[i].price && input[1].value >= this.store[i].price) { 
          return true;
       };
    }
@@ -115,6 +114,176 @@ function searchPrice() {
    input[1].addEventListener("keydown", checkKey);
 }
 
+function createItem() {
+   const container = document.getElementsByClassName(`${this.name}__container`)[0];
+   const item = document.createElement("div");
+   const name = document.createElement("div");
+   const price = document.createElement("div");
+   const deleteItem = document.createElement("div");
+   const close = document.createElement("div");
+   const inputRename = document.createElement("input");
+   const inputReprice = document.createElement("input");
+   const avatar = document.createElement("div");
+   const boxAvatar = document.createElement("div");
+   // добавляем им class 
+   item.classList.add(`${this.name}__item`, `${this.name}__item_js`);
+   name.classList.add(`${this.name}__name`, `${this.name}__name_js`);
+   price.classList.add(`${this.name}__price`, `${this.name}__price_js`);
+   deleteItem.classList.add(`${this.name}__delete`, `${this.name}__delete_js`);
+   close.classList.add(`${this.name}__close`, `${this.name}__close_js`, `close`);
+   inputRename.classList.add(`${this.name}__rename`, `${this.name}__rename_js`);
+   inputReprice.classList.add(`${this.name}__reprice`, `${this.name}__reprice_js`);
+   avatar.classList.add(`${this.name}__avatar`, `${this.name}__avatar_js`);
+   boxAvatar.classList.add(`${this.name}__box-avatar`, `${this.name}__box-avatar_js`);
+   //вспомогательная переменная 
+   // ключеные стили 
+   item.style.display = "flex";
+   inputReprice.style.display = "none";
+   inputRename.style.display = "none";
+   avatar.style.background = `url("${this.store[i].img}")0% 0% / cover no-repeat`;
+   // довляем атрибут инпуту
+   inputRename.setAttribute("placeholder", "Новое название...");
+   inputReprice.setAttribute("placeholder", "Новое цена...");
+
+   // добавляем текст   
+   price.innerHTML = `${this.store[i].price}`;
+   name.innerHTML = `${this.store[i].name}`;
+
+   // собираем
+   boxAvatar.insertAdjacentElement("beforeend", avatar);
+   container.insertAdjacentElement("beforeend", item);
+   item.insertAdjacentElement("beforeend", boxAvatar);
+   item.insertAdjacentElement("beforeend", name);
+   item.insertAdjacentElement("beforeend", price);
+   item.insertAdjacentElement("beforeend", deleteItem);
+   deleteItem.insertAdjacentElement("beforeend", close);
+   name.insertAdjacentElement("beforeend", inputRename);
+   price.insertAdjacentElement("beforeend", inputReprice);
+   // присваиваем элементам события 
+   var deleteByCross = deleteByCross.bind(this)
+   var rename = rename.bind(this)
+   var rePrice = rePrice.bind(this)
+
+   deleteItem.addEventListener("click", deleteByCross)
+   name.addEventListener("dblclick", rename)
+   price.addEventListener("dblclick", rePrice)
+
+   // // меняем название двойным кликом по названию  
+   function deleteByCross(e) {
+      // ищем позицию элемента в списке    
+      for (let i = 0; i < this.store.length; i++) {
+         if (e.target == document.querySelectorAll(`.${this.name}__close_js`)[i]
+            || e.target == document.querySelectorAll(`.${this.name}__delete_js`)[i]) {
+            // удаляем из массива store объект   
+            this.store.splice(i, 1);
+            item.style.transform = "translateX(1300px)";
+            // удаляем элемент из DOM 
+            setTimeout(() => {
+               item.remove();
+            }, 400)
+            break;
+         }
+      }
+   }
+
+   // // меняем название двойным кликом по названию   
+   function rename(e) {
+      let newName = document.querySelectorAll(`.${this.name}__name_js`);
+      let input = document.querySelectorAll(`.${this.name}__rename_js`);
+
+      //скрыть все инпуты rename 
+      for (let i = 0; i < this.store.length; i++) {
+         input[i].style.display = "none";
+         input[i].value = this.store[i].name;
+      }
+
+      // ищем позицию по которой был совершён даблклик
+      for (let i = 0; i < this.store.length; i++) {
+         //показать инпут  с позицией i (если соответствует)
+         if (e.target == newName[i]) {
+            let newText = newName[i].childNodes[0];
+            input[i].style.display = "block";
+            input[i].addEventListener("keydown", (e) => {
+               if (e.keyCode == 13) {
+                  newText.nodeValue = input[i].value;
+                  this.store[i].name = input[i].value;
+                  input[i].style.display = "none";
+               }
+               else if (e.keyCode == 27) {
+                  input[i].style.display = "none";
+               }
+            })
+            break;
+         }
+      }
+   }
+
+   function rePrice(e) {
+      let newPrice = document.querySelectorAll(`.${this.name}__price_js`);
+      let input = document.querySelectorAll(`.${this.name}__reprice_js`);
+      //скрыть все инпуты reprice
+      for (let i = 0; i < this.store.length; i++) {
+         input[i].style.display = "none";
+         input[i].value = this.store[i].price;
+      }
+      // ищем позицию по которой был совершён даблклик
+      for (let i = 0; i < this.store.length; i++) {
+         //показать инпут  с позицией i (если соответствует)
+         if (e.target == newPrice[i]) {
+            let newNumber = newPrice[i].childNodes[0];
+            input[i].style.display = "block";
+            var clone = this.store[i].price;
+            input[i].addEventListener("keydown", (e) => {
+               setTimeout(() => {
+                  if (true) {
+                     if (!checkInputSymbols(input[i]) && !checkInputStr(input[i]) && !/ /.test(input[i].value)) {
+                        clone = input[i].value;
+                        if (e.keyCode == 13) {
+                           newNumber.nodeValue = input[i].value;
+                           this.store[i].price = Number(input[i].value);
+                           input[i].style.display = "none";
+                        }
+                     }
+                     else input[i].value = clone;
+                  }
+                  if (e.keyCode == 27) {
+                     input[i].style.display = "none";
+                  }
+               }, 20);
+            })
+            break;
+         }
+      }
+   }
+}
+
+
+
+
+// удалить элемент/элементы  
+function deleteResultSearch() {
+
+   let item = document.querySelectorAll(`.${this.name}__item_js`);
+   let arr = [];
+   // ищем позицию элементов со стилем d flex
+   // записываем в arr
+   for (let i = 0; i < item.length; i++) {
+      if (item[i].style.display == "flex") {
+         arr.push(i);
+      }
+   }
+   let a = 1;
+   for (let i = arr.length - 1; i >= 0; i--) {
+      this.store.splice(arr[i], 1);
+      setTimeout(() => {
+         item[arr[i]].style.transform = "translateX(1300px)"
+         setTimeout(() => {
+            item[arr[i]].remove();
+         }, 1200)
+      }, a * i * 100)
+   }
+}
+
 
 
 
@@ -152,179 +321,6 @@ inputHookah.addEventListener("keydown", (e) => {
       }
       , 20)
 })
-
-// удалить элемент/элементы  
-function deleteResultSearch() {
-
-   let item = document.querySelectorAll(`.${this.name}__item_js`);
-   let arr = [];
-   // ищем позицию элементов со стилем d flex
-   // записываем в arr
-   for (let i = 0; i < item.length; i++) {
-      if (item[i].style.display == "flex") {
-         arr.push(i);
-      }
-   }
-   let a = 1;
-   for (let i = arr.length - 1; i >= 0; i--) {
-      this.store.splice(arr[i], 1);
-      setTimeout(() => {
-         item[arr[i]].style.transform = "translateX(1300px)"
-         setTimeout(() => {
-            item[arr[i]].remove();
-         }, 1200)
-      }, a * i * 100)
-   }
-}
-
-
-function createItem() {
-   const container = document.getElementsByClassName(`${this.name}__container`)[0];
-   const item = document.createElement("div");
-   const name = document.createElement("div");
-   const price = document.createElement("div");
-   const deleteItem = document.createElement("div");
-   const close = document.createElement("div");
-   const inputRename = document.createElement("input");
-   const inputReprice = document.createElement("input");
-   const avatar = document.createElement("div");
-   const boxAvatar = document.createElement("div");
-   // добавляем им class 
-   item.classList.add(`${this.name}__item`, `${this.name}__item_js`);
-   name.classList.add(`${this.name}__name`, `${this.name}__name_js`);
-   price.classList.add(`${this.name}__price`, `${this.name}__price_js`);
-   deleteItem.classList.add(`${this.name}__delete`, `${this.name}__delete_js`);
-   close.classList.add(`${this.name}__close`, `${this.name}__close_js`, `close`);
-   inputRename.classList.add(`${this.name}__rename`, `${this.name}__rename_js`);
-   inputReprice.classList.add(`${this.name}__reprice`, `${this.name}__reprice_js`);
-   avatar.classList.add(`${this.name}__avatar`, `${this.name}__avatar_js`);
-   boxAvatar.classList.add(`${this.name}__box-avatar`, `${this.name}__box-avatar_js`);
-   //вспомогательная переменная
-   let that = this
-   // ключеные стили 
-   item.style.display = "flex";
-   inputReprice.style.display = "none";
-   item.style.position = "relative";
-   inputRename.style.position = "absolute";
-   inputRename.style.display = "none";
-   inputReprice.style.position = "absolute";
-   avatar.style.background = `url("${this.store[i].img}")`;
-   avatar.style.backgroundRepeat = "no-repeat";
-   avatar.style.backgroundSize = "cover";
-   // довляем атрибут инпуту
-   inputRename.setAttribute("placeholder", "Новое название...");
-   inputReprice.setAttribute("placeholder", "Новое цена...");
-
-   // добавляем текст   
-   price.innerHTML = `${this.store[i].price}`;
-   name.innerHTML = `${this.store[i].name}`;
-
-   // собираем
-   boxAvatar.insertAdjacentElement("beforeend", avatar);
-   container.insertAdjacentElement("beforeend", item);
-   item.insertAdjacentElement("beforeend", boxAvatar);
-   item.insertAdjacentElement("beforeend", name);
-   item.insertAdjacentElement("beforeend", price);
-   item.insertAdjacentElement("beforeend", deleteItem);
-   deleteItem.insertAdjacentElement("beforeend", close);
-   name.insertAdjacentElement("beforeend", inputRename);
-   price.insertAdjacentElement("beforeend", inputReprice);
-   // присваиваем элементам события 
-
-   // удаление кликом по крестику
-   deleteItem.addEventListener("click", function deleteByCross(e) {
-      // ищем позицию элемента в списке    
-      for (let i = 0; i < that.store.length; i++) {
-         if (e.target == document.querySelectorAll(`.${that.name}__close_js`)[i]
-            || e.target == document.querySelectorAll(`.${that.name}__delete_js`)[i]) {
-            // удаляем из массива store объект   
-            that.store.splice(i, 1);
-            item.style.transform = "translateX(1300px)";
-            // удаляем элемент из DOM 
-            setTimeout(() => {
-               item.remove();
-            }, 400)
-            break;
-         }
-      }
-   })
-
-
-   // меняем название двойным кликом по названию  
-   name.addEventListener("dblclick", function rename(e) {
-      let newName = document.querySelectorAll(`.${that.name}__name_js`);
-      let input = document.querySelectorAll(`.${that.name}__rename_js`);
-
-      //скрыть все инпуты rename 
-      for (let i = 0; i < that.store.length; i++) {
-         input[i].style.display = "none";
-         input[i].value = that.store[i].name;
-      }
-
-      // ищем позицию по которой был совершён даблклик
-      for (let i = 0; i < that.store.length; i++) {
-         //показать инпут  с позицией i (если соответствует)
-         if (e.target == newName[i]) {
-            let newText = newName[i].childNodes[0];
-            input[i].style.display = "block";
-            input[i].addEventListener("keydown", function n(e) {
-               if (e.keyCode == 13) {
-                  newText.nodeValue = input[i].value;
-                  that.store[i].name = input[i].value;
-                  input[i].style.display = "none";
-               }
-               else if (e.keyCode == 27) {
-                  input[i].style.display = "none";
-               }
-            })
-            break;
-         }
-      }
-   })
-
-   price.addEventListener("dblclick", function rename(e) {
-      let newPrice = document.querySelectorAll(`.${that.name}__price_js`);
-      let input = document.querySelectorAll(`.${that.name}__reprice_js`);
-      //скрыть все инпуты reprice
-      for (let i = 0; i < that.store.length; i++) {
-         input[i].style.display = "none";
-         input[i].value = that.store[i].price;
-      }
-      // ищем позицию по которой был совершён даблклик
-      for (let i = 0; i < that.store.length; i++) {
-         //показать инпут  с позицией i (если соответствует)
-         if (e.target == newPrice[i]) {
-            let newNumber = newPrice[i].childNodes[0];
-            input[i].style.display = "block";
-            var clone = that.store[i].price;
-            input[i].addEventListener("keydown", function n(e) {
-               setTimeout(() => {
-                  if (true) {
-                     if (!checkInputSymbols(input[i]) && !checkInputStr(input[i]) && !/ /.test(input[i].value)) {
-                        clone = input[i].value;
-                        if (e.keyCode == 13) {
-                           newNumber.nodeValue = input[i].value;
-                           that.store[i].price = Number(input[i].value);
-                           input[i].style.display = "none";
-                        }
-                     }
-                     else input[i].value = clone;
-                  }
-                  if (e.keyCode == 27) {
-                     input[i].style.display = "none";
-                  }
-               }, 20);
-            })
-            break;
-         }
-      }
-   })
-
-}
-
-
-
-
 
 
 

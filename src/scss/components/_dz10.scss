@@ -72,6 +72,7 @@
   }
 
   &__item {
+    position: relative;
     display: flex;
     font-size: 20px;
     transition: 0.5s cubic-bezier(0.57, -0.26, 0.25, 0.75);
@@ -100,6 +101,7 @@
     height: 90;
   }
   &__rename {
+    position: absolute;
     border-radius: 10px;
     padding: 10px 0px 10px 10px;
     margin-left: -10;
@@ -108,6 +110,7 @@
     background: #070a11;
     color: rgb(139, 133, 133);
     border: none;
+
   }
   &__price {
     user-select: none;
@@ -115,6 +118,7 @@
     width: 45%;
   }
   &__reprice {
+    position: absolute;
     border-radius: 10px;
     padding: 10px 50px 10px 50px;
     text-align: center;
@@ -242,6 +246,7 @@
     background: #000000;
   }
   &__item {
+    position: relative;
     display: flex;
     font-size: 20px;
     transition: 0.5s cubic-bezier(0.57, -0.26, 0.25, 0.75);
@@ -274,6 +279,7 @@
     }
   }
   &__rename {
+    position: absolute;
     border-radius: 10px;
     padding: 10px 0px 10px 10px;
     margin-left: -10;
@@ -282,6 +288,7 @@
     background: #070a11;
     color: rgb(139, 133, 133);
     border: none;
+
   }
   &__price {
     user-select: none;
@@ -289,6 +296,7 @@
     width: 45%;
   }
   &__reprice {
+    position: absolute;
     border-radius: 10px;
     padding: 10px 50px 10px 50px;
     text-align: center;

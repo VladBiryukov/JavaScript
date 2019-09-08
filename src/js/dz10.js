@@ -71,7 +71,7 @@ function searchPrice() {
    const item = document.querySelectorAll(`.${this.name}__item_js`);
 
    let checkRange = (i) => {
-      if (input[0].value <= this.store[i].price && input[1].value >= this.store[i].price) { 
+      if (input[0].value <= this.store[i].price && input[1].value >= this.store[i].price) {
          return true;
       };
    }
@@ -190,19 +190,27 @@ function createItem() {
    function rename(e) {
       let newName = document.querySelectorAll(`.${this.name}__name_js`);
       let input = document.querySelectorAll(`.${this.name}__rename_js`);
-
-      //скрыть все инпуты rename 
+      let position;
+      // определяеи позицию 
       for (let i = 0; i < this.store.length; i++) {
-         input[i].style.display = "none";
-         input[i].value = this.store[i].name;
+         if (e.target == newName[i] || e.target == input[i]) {
+            // записывам позицию 
+            position = i
+            break
+         }
       }
-
-      // ищем позицию по которой был совершён даблклик
       for (let i = 0; i < this.store.length; i++) {
-         //показать инпут  с позицией i (если соответствует)
-         if (e.target == newName[i]) {
+         if (input[i] != input[position]) {
+            input[i].style.display = "none";
+            input[i].value = this.store[i].name;
+         }
+         else {
+            input[i].value = this.store[i].name;
+            input[i].onblur = () => {
+               input[i].style.display = "none"
+            }
             let newText = newName[i].childNodes[0];
-            input[i].style.display = "block";
+            input[i].style.display = "block"
             input[i].addEventListener("keydown", (e) => {
                if (e.keyCode == 13) {
                   newText.nodeValue = input[i].value;
@@ -213,26 +221,37 @@ function createItem() {
                   input[i].style.display = "none";
                }
             })
-            break;
          }
       }
+
    }
 
    function rePrice(e) {
-      let newPrice = document.querySelectorAll(`.${this.name}__price_js`);
-      let input = document.querySelectorAll(`.${this.name}__reprice_js`);
-      //скрыть все инпуты reprice
+      const newPrice = document.querySelectorAll(`.${this.name}__price_js`);
+      const input = document.querySelectorAll(`.${this.name}__reprice_js`);
+      let position = 0;
+      // определяеи позицию 
       for (let i = 0; i < this.store.length; i++) {
-         input[i].style.display = "none";
-         input[i].value = this.store[i].price;
+         if (e.target == newPrice[i] || e.target == input[i]) {
+            // записывам позицию 
+            position = i
+            break
+         }
       }
-      // ищем позицию по которой был совершён даблклик
+      console.log(position);
       for (let i = 0; i < this.store.length; i++) {
-         //показать инпут  с позицией i (если соответствует)
-         if (e.target == newPrice[i]) {
+         if (input[i] != input[position]) {
+            input[i].style.display = "none";
+            input[i].value = this.store[i].price;
+         }
+         else {
+            input[i].onblur = () => {
+               input[i].style.display = "none"
+            }
+            let clone = this.store[i].price
             let newNumber = newPrice[i].childNodes[0];
-            input[i].style.display = "block";
-            var clone = this.store[i].price;
+            input[i].value = this.store[i].price;
+            input[i].style.display = "block"
             input[i].addEventListener("keydown", (e) => {
                setTimeout(() => {
                   if (true) {
@@ -251,14 +270,10 @@ function createItem() {
                   }
                }, 20);
             })
-            break;
          }
       }
    }
 }
-
-
-
 
 // удалить элемент/элементы  
 function deleteResultSearch() {

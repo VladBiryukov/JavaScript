@@ -22,11 +22,11 @@ var steam = {
 var hookah = {
    name: "hookah",
    store: [
-      { name: "Brass", price: 12999, img: "https://static.tildacdn.com/tild6434-3133-4465-b766-363632623262/vz_brass_1.jpg" },
-      { name: "Pandora", price: 7889, img: "https://static.tildacdn.com/tild6439-6165-4638-b463-653832633830/vz_pandora_1.jpg" },
-      { name: "Pro", price: 8900, img: "https://static.tildacdn.com/tild6436-6638-4731-a631-396464616231/vz_pro_1.jpg" },
-      { name: "Minimal", price: 7500, img: "https://static.tildacdn.com/tild6264-3434-4662-a136-613436313362/vz_minimal_1.jpg" },
-      { name: "Raido", price: 4999, img: "https://static.tildacdn.com/tild3464-6465-4463-b031-383864643538/vz_raido_8.jpg" },
+      { name: "Brass", price: 29999, img: "https://static.tildacdn.com/tild6434-3133-4465-b766-363632623262/vz_brass_1.jpg" },
+      { name: "Pandora", price: 27889, img: "https://static.tildacdn.com/tild6439-6165-4638-b463-653832633830/vz_pandora_1.jpg" },
+      { name: "Pro", price: 25999, img: "https://static.tildacdn.com/tild6436-6638-4731-a631-396464616231/vz_pro_1.jpg" },
+      { name: "Minimal", price: 28599, img: "https://static.tildacdn.com/tild6264-3434-4662-a136-613436313362/vz_minimal_1.jpg" },
+      { name: "Raido", price: 25999, img: "https://static.tildacdn.com/tild3464-6465-4463-b031-383864643538/vz_raido_8.jpg" },
 
    ],
    searchName: searchName,
@@ -41,25 +41,25 @@ for (var i = 0; i < steam.store.length; i++) {
 for (var i = 0; i < hookah.store.length; i++) {
    hookah.create();
 }
-steam.searchPrice()
-hookah.searchPrice()
+steam.searchPrice();
+hookah.searchPrice();
 
 
 function searchName(name) {
-   let check
+   let check;
    for (let i = 0; i < this.store.length; i++) {
 
       let notThat = document.getElementsByClassName(`${this.name}__item_js`)[i];
       if (notThat) {
-         notThat.style.display = "none"
-         check = this.store[i].name.indexOf(name)
+         notThat.style.display = "none";
+         check = this.store[i].name.indexOf(name);
          if (check != Number(-1)) {
             let exactMatch = document.getElementsByClassName(`${this.name}__item_js`)[i];
-            exactMatch.style.display = "flex"
+            exactMatch.style.display = "flex";
          }
          if (document.getElementsByClassName(`${this.name}__input-search_js`)[0].value.length <= 0) {
             for (let i = 0; i < this.store.length; i++) {
-               notThat.style.display = "flex"
+               notThat.style.display = "flex";
             }
          }
       }
@@ -68,12 +68,12 @@ function searchName(name) {
 
 function searchPrice() {
    const input = document.querySelectorAll(`.${this.name}__search-price_js`);
-   const item = document.querySelectorAll(`.${this.name}__item_js`)
+   const item = document.querySelectorAll(`.${this.name}__item_js`);
 
    let checkRange = (i) => {
       if (input[0].value <= this.store[i].price && input[1].value >= this.store[i].price) {
-         console.log(this.store[i].price)
-         return true
+         console.log(this.store[i].price);
+         return true;
       };
    }
 
@@ -87,7 +87,7 @@ function searchPrice() {
          }
       }
       else if (e.keyCode == 46) {
-         this.deleteResultSearch()
+         this.deleteResultSearch();
       }
 
    }
@@ -98,10 +98,10 @@ function searchPrice() {
             if (input[0].value != 0 && input[1].value != 0) {
                for (let i = 0; i < this.store.length; i++) {
                   if (checkRange(i)) {
-                     item[i].style.display = "flex"
+                     item[i].style.display = "flex";
                   }
                   else {
-                     item[i].style.display = "none"
+                     item[i].style.display = "none";
                   }
                }
             }
@@ -109,10 +109,10 @@ function searchPrice() {
       }
    }
 
-   input[0].addEventListener("keydown", inputProcessing)
-   input[1].addEventListener("keydown", inputProcessing)
-   input[0].addEventListener("keydown", checkKey)
-   input[1].addEventListener("keydown", checkKey)
+   input[0].addEventListener("keydown", inputProcessing);
+   input[1].addEventListener("keydown", inputProcessing);
+   input[0].addEventListener("keydown", checkKey);
+   input[1].addEventListener("keydown", checkKey);
 }
 
 
@@ -130,7 +130,7 @@ inputSteam.addEventListener("keydown", (e) => {
    setTimeout(
       () => {
          if (e.keyCode == 46) {
-            steam.deleteResultSearch()
+            steam.deleteResultSearch();
          }
       }
       , 20)
@@ -140,14 +140,14 @@ inputHookah.addEventListener("keydown", (e) => {
    setTimeout(
       () => {
          if (hookah.store.length != 0) {
-            hookah.searchName(`${inputHookah.value}`)
+            hookah.searchName(`${inputHookah.value}`);
          }
       }
       , 20)
    setTimeout(
       () => {
          if (e.keyCode == 46) {
-            hookah.deleteResultSearch()
+            hookah.deleteResultSearch();
          }
       }
       , 20)
@@ -156,13 +156,13 @@ inputHookah.addEventListener("keydown", (e) => {
 // удалить элемент/элементы  
 function deleteResultSearch() {
 
-   let item = document.querySelectorAll(`.${this.name}__item_js`)
+   let item = document.querySelectorAll(`.${this.name}__item_js`);
    let arr = [];
    // ищем позицию элементов со стилем d flex
    // записываем в arr
    for (let i = 0; i < item.length; i++) {
       if (item[i].style.display == "flex") {
-         arr.push(i)
+         arr.push(i);
       }
    }
    let a = 1;
@@ -179,7 +179,7 @@ function deleteResultSearch() {
 
 
 function createItem() {
-   const container = document.getElementsByClassName(`${this.name}__container`)[0]
+   const container = document.getElementsByClassName(`${this.name}__container`)[0];
    const item = document.createElement("div");
    const name = document.createElement("div");
    const price = document.createElement("div");
@@ -202,18 +202,18 @@ function createItem() {
    //вспомогательная переменная
    let that = this
    // ключеные стили 
-   item.style.display = "flex"
-   item.style.position = "relative"
-   inputRename.style.position = "absolute"
-   inputRename.style.display = "none"
-   inputReprice.style.position = "absolute"
-   inputReprice.style.display = "none"
-   avatar.style.background = `url("${this.store[i].img}")`
-   avatar.style.backgroundRepeat = "no-repeat"
-   avatar.style.backgroundSize = "cover"
+   item.style.display = "flex";
+   inputReprice.style.display = "none";
+   item.style.position = "relative";
+   inputRename.style.position = "absolute";
+   inputRename.style.display = "none";
+   inputReprice.style.position = "absolute";
+   avatar.style.background = `url("${this.store[i].img}")`;
+   avatar.style.backgroundRepeat = "no-repeat";
+   avatar.style.backgroundSize = "cover";
    // довляем атрибут инпуту
-   inputRename.setAttribute("placeholder", "Новое название...")
-   inputReprice.setAttribute("placeholder", "Новое цена...")
+   inputRename.setAttribute("placeholder", "Новое название...");
+   inputReprice.setAttribute("placeholder", "Новое цена...");
 
    // добавляем текст   
    price.innerHTML = `${this.store[i].price}`;
@@ -258,7 +258,7 @@ function createItem() {
       //скрыть все инпуты rename 
       for (let i = 0; i < that.store.length; i++) {
          input[i].style.display = "none";
-         input[i].value = that.store[i].name
+         input[i].value = that.store[i].name;
       }
 
       // ищем позицию по которой был совершён даблклик
@@ -288,7 +288,7 @@ function createItem() {
       //скрыть все инпуты reprice
       for (let i = 0; i < that.store.length; i++) {
          input[i].style.display = "none";
-         input[i].value = that.store[i].price
+         input[i].value = that.store[i].price;
       }
       // ищем позицию по которой был совершён даблклик
       for (let i = 0; i < that.store.length; i++) {
@@ -296,19 +296,19 @@ function createItem() {
          if (e.target == newPrice[i]) {
             let newNumber = newPrice[i].childNodes[0];
             input[i].style.display = "block";
-            var clone = that.store[i].price
+            var clone = that.store[i].price;
             input[i].addEventListener("keydown", function n(e) {
                setTimeout(() => {
                   if (true) {
                      if (!checkInputSymbols(input[i]) && !checkInputStr(input[i]) && !/ /.test(input[i].value)) {
-                        clone = input[i].value
+                        clone = input[i].value;
                         if (e.keyCode == 13) {
                            newNumber.nodeValue = input[i].value;
                            that.store[i].price = Number(input[i].value);
                            input[i].style.display = "none";
                         }
                      }
-                     else input[i].value = clone
+                     else input[i].value = clone;
                   }
                   if (e.keyCode == 27) {
                      input[i].style.display = "none";

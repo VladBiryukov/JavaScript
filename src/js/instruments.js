@@ -21,7 +21,7 @@ function checkString(check) {
  * @return false||true
  */
 function checkInputStr(input) {
-    if (/ *[a-zа-я]/i.test(input.value)) return true;
+    if (/ *[a-zа-я|ё]/i.test(input.value)) return true;
     else false;
 }
 /**

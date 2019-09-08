@@ -109,7 +109,8 @@ function checkTel() {
    var regExpMTC = RegExp(/^(8)(910|987|915|916|919)[\d{7}]{6}\d$|^\+(7)(910|987|915|916|919)[\d{7}]{6}\d$/),
       regExpMegafon = RegExp(/^(8)(929|925|926)[\d{7}]{6}\d$|^\+(7)(929|925|926)[\d{7}]{6}\d$/),
       regExpBeeline = RegExp(/^(8)(903|905|906|909|961|962|963|964|695)[\d{7}]{6}\d$|^\+(7)(903|905|906|909|961|962|963|964|695)[\d{7}]{6}\d$/),
-      clone = "";
+      regExpSymbols = RegExp(/ *[.|<|>|?|;|:|"|'|`|!|@|#|$|%|^|&|*|(|)|~|_|-|{|}|=|-|,]/);
+
    /**
     * 
     * @param { String }   принимает название оператора в ""
@@ -131,31 +132,53 @@ function checkTel() {
       }
 
    }
-
-
+   function inputInvalid(input) {
+      input.style.border = "2px solid red"
+   }
+   function inputValid(input) {
+      input.style.border = "2px solid gray"
+   }
    input.addEventListener("keydown", function (e) {
       setTimeout(
          function checkInput() {
-            var regExpSymbols = RegExp(/ *[.|<|>|?|;|:|"|'|`|!|@|#|$|%|^|&|*|(|)|~|_|-|{|}|=|-|,]/)
-            if (checkInputStr(input) || regExpSymbols.test(input.value) || /^[\d-\d]{12,}$| |^\+[\d-\d]{12,}$/.test(input.value)) {
-               input.value = clone;
+
+            // if (checkInputStr(input) || regExpSymbols.test(input.value) || /^[\d-\d]{12,}$| |^\+[\d-\d]{12,}$/.test(input.value)) {
+            //    input.value = ""
+            // }
+            if (/^ /.test(input.value)) {
+               input.value = ""
             }
-            else if (!checkInputStr(input)) {
-               clone = input.value;
-               if (chechMobileOperator("megafon", input.value)) {
+            if (checkInputStr(input)) {
+               inputInvalid(input)
+            }
+            if (!checkInputStr(input)) {
+               inputValid(input)
+            }
+            if (e.keyCode == 13) {
+               if (checkInputStr(input)) {
+                  inputInvalid(input)
+               }
+               else if (chechMobileOperator("megafon", input.value)) {
                   result.innerHTML = "Сотовый оператор: Мегафон";
+                  inputValid(input)
                }
                else if (chechMobileOperator("MTC", input.value)) {
                   result.innerHTML = "Сотовый оператор: MTC";
+                  inputValid(input)
                }
                else if (chechMobileOperator("beeline", input.value)) {
                   result.innerHTML = "Сотовый оператор: Beeline";
+                  inputValid(input)
                }
                else {
-                  result.innerHTML = "Сотовый оператор:";
-                  input.value = clone;
+                  result.innerHTML = "Сотовый оператор: не определён";
+                  inputValid(input)
                }
             }
+            // }
+
+
+
          }
          , 1)
    })
@@ -175,42 +198,40 @@ function dz9Animation() {
    function sumNumberInput(arr) {
       for (var i = 0; i < arr.length; i++) {
          summ = summ + Number(arr[Number(i)]);
+
       }
       return summ;
    }
 
    input.addEventListener("keydown", function checkInput(e) {
-      summ = 0;
       setTimeout(function () {
+         summ = 0;
          if (checkInputStr(input) || checkInputSymbols(input) || / /.test(input.value) || !/^\d+$/.test(input.value)) {
             input.value = cloneInputValue;
          }
          else if (!checkInputStr(input) && !checkInputSymbols(input) && /^\d+$/.test(input.value)) {
             cloneInputValue = input.value;
             if (e.keyCode == 13) {
-
                arrNumber.push(input.value);
                sumNumberInput(arrNumber);
-
                let numberAnimation = document.createElement("div");
                numberAnimation.innerHTML = `${arrNumber[arrNumber.length - 1]}`;
                numberAnimation.style.paddingTop = "20px";
                numberAnimation.style.opacity = `0.8`;
+               result.innerHTML = `Результат: ${summ}`;
+               input.value = "";
+               cloneInputValue = "";
                result.insertAdjacentElement("beforeend", numberAnimation);
                let y = 0;
-
-               var idInterval = setInterval(() => {
+               let idInterval = setInterval(() => {
                   numberAnimation.style.transform = `translate(78px,${y--}px)`;
                }, 7)
-               setTimeout(function name() {
+               setTimeout(() => {
                   clearInterval(idInterval);
-                  input.value = "";
                   numberAnimation.remove();
-                  result.innerHTML = `Результат: ${summ}`;
-                  cloneInputValue = "";
                }, 300)
             }
          }
-      }, 1)
+      }, 0)
    })
 }

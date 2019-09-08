@@ -2,6 +2,7 @@
 
 
 
+
 // function num(n, s) {
 //     s = s | 2
 //     return console.log(Math.pow(n, s));
@@ -147,11 +148,67 @@
 //     .catch(err => alert(err))
 
 
+// var loadScript = new Promise(function (resolve, reject) {
+//     var script = document.createElement("script");
+//     script.src = "./test.js";
+//     script.onload = () => resolve(user);
+//     script.onerror = () => reject({ message: "не нашли файл", code: 404 });
+//     document.head.append(script);
+// });
+
+// loadScript
+//     .then(secondPayload => console.log(secondPayload.name))
+//     .catch(err => console.log(err))
+//     .finally(console.log(checkString("check")))
+
+
+// var prom = function (src) {
+//     return new Promise(function (resolve, reject) {
+//         var script = document.createElement("script");
+//         script.src = "./test.js";
+//         script.onload = () => resolve(log)
+//         script.onerror = () => reject(console.log("не нашли"))
+//         document.head.append(script)
+//     })
+// } 
 
 
 
 
 
+// var loadScript = function (src) {
+//     return new Promise(function (resolve, reject) {
+//       var script = document.createElement('script');
+//       script.src = src;
+//       script.onload = () => resolve(`файл "${src}`);
+//       script.onerror = () => reject(err = { message: `файл "${src} не найден`, error: 404 });
+//       document.head.append(script);
+//     });
+//   }
+  
+//   (function () {
+  
+//     loadScript(`./dz11.8.1.js`)
+//       .then(secondValue => console.log(secondValue + " загружен"))
+//       .catch(err => console.log(err))
+//       .finally(() => console.log("Промис отработал"))
+  
+//     loadScript(`./dz11.8.2.js`)
+//       .then(secondValue => console.log(secondValue + " загружен"))
+//       .catch(err => console.log(err))
+//       .finally(() => console.log("Промис отработал"))
+  
+//     loadScript(`./dz11.8.3.js`)
+//       .then(secondValue => console.log(secondValue + " загружен"))
+//       .catch(err => console.log(err))
+//       .finally(() => console.log("Промис отработал"))
+  
+//     loadScript(`./dz11.8.4.js`)
+//       .then(secondValue => console.log(secondValue + " загружен"))
+//       .catch(err => console.log(err))
+//       .finally(() => console.log("Промис отработал"))
+//   })
+  
 
 
 

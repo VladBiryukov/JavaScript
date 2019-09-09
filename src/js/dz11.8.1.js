@@ -1,4 +1,4 @@
-date()
+date();
 var body = document.body;
 function date() {
    var dateResult = document.getElementsByClassName("date__result_js")[0],

@@ -238,7 +238,6 @@ function createItem() {
             break
          }
       }
-      console.log(position);
       for (let i = 0; i < this.store.length; i++) {
          if (input[i] != input[position]) {
             input[i].style.display = "none";

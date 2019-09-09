@@ -323,19 +323,11 @@ function parallax() {
    })
 
    parallaxOverlay.addEventListener("mouseover", () => {
-      imgParallax.style.transition = "2s"
-      imgParallax.style.transform = "scale(1.1)";
       parallaxOverlay.style.background = arBackground[0];
    })
 
    parallaxOverlay.addEventListener("mouseout", () => {
-
-
-      imgParallax.style.transform = "scale(1)";
       parallaxOverlay.style.background = arBackground[1];
-      setTimeout(() => {
-         imgParallax.style.transition = "0s"
-      }, 2000)
    })
 
 }

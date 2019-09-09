@@ -35,7 +35,7 @@ function dz6Tasc3() {
     }
 
     body.addEventListener("click", (e) => {
-        if (e.target !=contextMenu) {
+        if (e.target != contextMenu) {
             contextMenu.style.display = "none";
         }
     })

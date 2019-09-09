@@ -76,29 +76,26 @@
     });
   }
 
-  prom();
-  function prom() {
+  loadScriptProm(`./dz11.8.1.js`)
+    .then(secondValue => console.log(secondValue))
+    .catch(err => console.log(err))
+    .finally(() => console.log("Промис отработал"))
 
-    loadScriptProm(`./dz11.8.1.js`)
-      .then(secondValue => console.log(secondValue))
-      .catch(err => console.log(err))
-      .finally(() => console.log("Промис отработал"))
+  loadScriptProm(`./dz11.8.2.js`)
+    .then(secondValue => console.log(secondValue))
+    .catch(err => console.log(err))
+    .finally(() => console.log("Промис отработал"))
 
-    loadScriptProm(`./dz11.8.2.js`)
-      .then(secondValue => console.log(secondValue))
-      .catch(err => console.log(err))
-      .finally(() => console.log("Промис отработал"))
+  loadScriptProm(`./dz11.8.3.js`)
+    .then(secondValue => console.log(secondValue))
+    .catch(err => console.log(err))
+    .finally(() => console.log("Промис отработал"))
 
-    loadScriptProm(`./dz11.8.3.js`)
-      .then(secondValue => console.log(secondValue))
-      .catch(err => console.log(err))
-      .finally(() => console.log("Промис отработал"))
+  loadScriptProm(`./dz11.8.4.js`)
+    .then(secondValue => console.log(secondValue))
+    .catch(err => console.log(err))
+    .finally(() => console.log("Промис отработал"))
 
-    loadScriptProm(`./dz11.8.4.js`)
-      .then(secondValue => console.log(secondValue))
-      .catch(err => console.log(err))
-      .finally(() => console.log("Промис отработал"))
-  }
 })()
 
 

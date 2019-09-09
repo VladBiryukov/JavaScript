@@ -1,1 +1,1 @@
-var log = "qwe "
+console.log("test");

@@ -18,15 +18,13 @@ for (let i = 0; i < headerNav.length; i++) {
 
 if (!localStorage.getItem("test")) {
     var clone = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    localStorage.setItem("test", JSON.stringify(clone));
-    console.log(localStorage.getItem("test"));
+    localStorage.setItem("test", JSON.stringify(clone)); 
 
 } 
 
 let newArr = localStorage.getItem("test")
 if (localStorage.getItem("test")) {
-    newArr = JSON.parse(newArr);
-    console.log(newArr);
+    newArr = JSON.parse(newArr); 
     for (let i = 0; i < newArr[positionSite]; i++) {
         // красим звёзды в записимости от оценки, если её нет то цикл ничего не делает
         star[i].style.background = arrStarState[1];

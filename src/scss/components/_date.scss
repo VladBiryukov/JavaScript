@@ -1,6 +1,8 @@
 .date {
   background: $bg_gray;
+  overflow: hidden;
   &__block {
+    position: relative;
     padding: 50px 0;
   }
   &__input {

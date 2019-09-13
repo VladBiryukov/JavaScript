@@ -1,6 +1,8 @@
 .lamp {
   transition: 1s;
+  overflow: hidden;
   &__block {
+    position: relative;
     padding: 65px 0;
     display: grid;
     grid-template-columns: repeat(12, 1fr);

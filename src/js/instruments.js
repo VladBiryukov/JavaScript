@@ -36,6 +36,10 @@ function checkInputSymbols(input) {
     if (/ *[.|<|>|?|;|:|"|'|~|`|!|@|#|$|%|^|&|*|(|)|\||/|[|{|}|_|+|=|,]/.test(input.value)) return true;
     else false;
 }
+function checkSymbols(check) {
+    if (/ *[.|<|>|?|;|:|"|'|~|`|!|@|#|$|%|^|&|*|(|)|\||/|[|{|}|_|+|=|,]/.test(check)) return true;
+    else false;
+}
 
 
 // проверка на ввод   

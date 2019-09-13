@@ -1,6 +1,8 @@
 .parallax {
   background: $bg_gray;
+  overflow: hidden;
   &__block {
+    position: relative;
     padding: 63px 0 74px 0;
     display: grid;
     grid-template-columns: repeat(12, 1fr);

@@ -1,6 +1,8 @@
 .slider {
+  overflow: hidden;
   &__block {
-    padding: 100 0;
+    position: relative;
+    padding: 100px 0px;
   }
   &__container {
     display: flex;

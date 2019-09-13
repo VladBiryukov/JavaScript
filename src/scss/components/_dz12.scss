@@ -1,0 +1,21 @@
+.info-downloads {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transition: 1s;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0px;
+  text-transform: uppercase;
+
+  transform: translateY(-20px);
+  &_active {
+    font-size: 20px;
+    transform: translateY(0px);
+  }
+}
+.info-counter {
+  position: absolute;
+  text-transform: uppercase;
+}

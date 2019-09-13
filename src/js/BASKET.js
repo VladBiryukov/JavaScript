@@ -208,10 +208,10 @@
 //       .catch(err => console.log(err))
 //       .finally(() => console.log("Промис отработал"))
 //   })   // item.style.position = "relative";
-   // inputRename.style.position = "absolute";
-   // inputReprice.style.position = "absolute";
-   // avatar.style.backgroundRepeat = "no-repeat";
-   // avatar.style.backgroundSize = "cover";
+// inputRename.style.position = "absolute";
+// inputReprice.style.position = "absolute";
+// avatar.style.backgroundRepeat = "no-repeat";
+// avatar.style.backgroundSize = "cover";
 
 
 
@@ -357,9 +357,60 @@
 
 
 
+const form = document.forms.form
+const input = form.elements.name
+const result = document.querySelector(".result-test")
+const btn = document.getElementsByClassName("input-submit")[0]
+const callback = document.getElementsByClassName("callback")[0]
+const box = document.getElementsByClassName("box")[0]
+const block = document.getElementsByClassName("preolader")[0]
 
 
 
+function createUser(arr, elem) {
+    var users = JSON.parse(arr)
+    var HTMLUser = users.map(user => {
+        return `<div> name = ${user.name} </div>`
+    })
+    result.innerHTML += HTMLUser.join("")
+}
+
+
+
+console.log(form);
+console.log(input);
+
+form.onsubmit = forms
+
+
+
+function forms() {
+
+    var xhr = new XMLHttpRequest
+    xhr.open("GET", "http://localhost/users", true)
+    xhr.send();
+    block.style.display = "flex"
+    xhr.onreadystatechange = function () {
+
+        if (xhr.readyState != 4) {
+            console.log(xhr.readyState);
+            return
+        }
+        if (xhr.status != 200) {
+            console.log("error");
+        }
+        else {
+            block.style.opacity = "0"
+            setTimeout(() => {
+                block.style.display = "none"
+            }, 500);
+
+            createUser(xhr.responseText, result)
+            console.log(JSON.parse(xhr.responseText));
+        }
+    }
+    return false
+}
 
 
 

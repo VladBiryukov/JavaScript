@@ -351,17 +351,38 @@
 
 
 
+var input = document.getElementsByClassName("input-tex_js")[0]
+var input2 = document.getElementsByClassName("input-tex_js")[0]
+var btn = document.getElementsByClassName("btn_js")[0]
+// var get = document.getElementsByClassName("get")[0]
+
+// var ok =
 
 
 
+    btn.onclick = function post() {
+        var request = fetch("http://localhost/blog", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: `${input.value}`, text: `${input2.value}`
+            }
+            )
+        })
+            .then(res => { return res.text() })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
 
- 
 
-
-
-
-
-
+        var request = fetch("http://localhost/blog", {
+            method: "GET"
+        })
+            .then(res => { return res.text() })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
 
 
 

@@ -70,9 +70,8 @@ $bg_gray: #f1f1f1;
 
 .invalid {
   transition: 0.2s;
-  border: 1px solid red;
-  background: red;
-  animation: invalid 0.01s infinite linear;
+  border: 3px solid red;
+  animation: invalid 0.3s infinite linear;
   border-radius: 10px;
 }
 @keyframes invalid {
@@ -80,7 +79,7 @@ $bg_gray: #f1f1f1;
     transform: translateX(0px);
   }
   50% {
-    transform: translateX(200px);
+    transform: translateX(20px);
   }
   100% {
     transform: translateX(0px);

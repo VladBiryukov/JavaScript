@@ -348,43 +348,46 @@
 // }
 
 
+// const btncon = document.getElementsByClassName("button-connection_js")[0]
+// const input = document.getElementsByClassName("input-tex_js")[0]
+// const input2 = document.getElementsByClassName("input-tex_js")[0]
+// const btn = document.getElementsByClassName("btn_js")[0]
+// btn.addEventListener("click", post)
+
+// input2.addEventListener("keydown", async (e) => {
+//     var request = await fetch("http://localhost/blog", {
+//         method: "DELETE",
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             _id: `${input2.value}`
+//         }
+//         )
+//     })
+//         .then(res => { return res.text() })
+//         .then(res => console.log(res))
+//         .catch(err => console.log(err))
+// })
 
 
+// async function post() {
+//     var request = await fetch("http://localhost/blog", {
+//         method: "POST",
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             title: `${input.value}`, text: `${input2.value}`
+//         }
+//         )
+//     })
+//         .then(res => { return res.text() })
+//         .then(res => console.log(res))
+//         .catch(err => console.log(err))
+// }
 
-var input = document.getElementsByClassName("input-tex_js")[0]
-var input2 = document.getElementsByClassName("input-tex_js")[0]
-var btn = document.getElementsByClassName("btn_js")[0]
-// var get = document.getElementsByClassName("get")[0]
-
-// var ok =
-
-
-
-    btn.onclick = function post() {
-        var request = fetch("http://localhost/blog", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                title: `${input.value}`, text: `${input2.value}`
-            }
-            )
-        })
-            .then(res => { return res.text() })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-
-
-        var request = fetch("http://localhost/blog", {
-            method: "GET"
-        })
-            .then(res => { return res.text() })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-    }
-
-
+ 
 
 
 

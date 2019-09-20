@@ -1,0 +1,217 @@
+.blog {
+  z-index: 2;
+  &__post {
+    position: relative;
+    overflow: hidden;
+    color: $gray;
+    background: #000102ec;
+    padding: 10px 50px 50px 20px;
+    border-bottom: 1px $gray solid;
+  }
+
+  &__input-change {
+    transform: translateY(0);
+    transition: 1s;
+    padding: 5px 20px;
+    font-size: 20px;
+    position: absolute;
+    resize: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.932);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    &_hidden {
+      // display: none;
+      transform: translateY(-200%);
+    }
+  }
+  &__close-post {
+    transition: 0.5s;
+    position: absolute;
+    cursor: pointer;
+    top: calc(50% - 16px);
+    right: 10px;
+    &::before {
+      background: $gray;
+    }
+    &::after {
+      background: $gray;
+    }
+    &:hover::after {
+      background: white;
+    }
+    &:hover::before {
+      background: white;
+    }
+  }
+  &__text {
+    transition: 1s cubic-bezier(0.57, -0.26, 0.25, 0.75);
+    font-size: 20px;
+    margin: 0;
+  }
+  &__name-post {
+    transition: 1s cubic-bezier(0.57, -0.26, 0.25, 0.75);
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom: 1px $gray solid;
+    padding: 20px;
+    color: $gray;
+    background: #000102f8;
+  }
+  &__add-post {
+    background: rgb(29, 26, 26) 0102fd;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    transition: 0.1s;
+    border-radius: 50%;
+    &::before {
+      transition: 0.1s;
+      position: absolute;
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: $gray;
+    }
+    &::after {
+      transition: 0.1s;
+      position: absolute;
+      content: "";
+      width: 2px;
+      height: 30px;
+      background: $gray;
+    }
+    &:hover {
+      background: rgba(228, 224, 224, 0.26);
+    }
+
+    &:hover::after {
+      background: rgb(248, 244, 244);
+    }
+    &:hover::before {
+      background: rgb(248, 244, 244);
+    }
+  }
+
+  /// modal
+  &__modal {
+    // transform: scale(1);
+    transition: 0.5s;
+    z-index: 4;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    // background: rgba(34, 34, 34, 0.938);
+    width: 100%;
+    height: 100%;
+    &_hidden {
+      transform: scale(0);
+    }
+  }
+  &__overlay-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(34, 34, 34, 0.938);
+  }
+  &__content-modal {
+    padding: 30px 50px;
+  }
+  &__modal-inner {
+    position: relative;
+    background: rgba(250, 250, 250, 0.144);
+    width: 60%;
+    min-height: 400px;
+  }
+  &__button {
+    user-select: none;
+    margin-top: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.733);
+    border-radius: 5px;
+    color: rgb(49, 48, 48);
+    cursor: pointer;
+    &:active {
+      transform: scale(1.1);
+    }
+    &:hover {
+      background: rgba(255, 255, 255, 0.61);
+    }
+  }
+  &__title {
+    font-family: $FF-Open-Sans;
+    text-align: center;
+    color: $white;
+    margin: 0;
+    &_main {
+      user-select: none;
+      font-size: 36px;
+      color: #aca8a8;
+    }
+  }
+  &__input {
+    background: rgba(255, 255, 255, 0.733);
+    resize: none;
+    outline: none;
+    width: 100%;
+    margin-top: 10px;
+    &_ivalid_js {
+      border: 1px solid rgb(255, 25, 25);
+    }
+    &_title {
+      padding: 5px 10px;
+    }
+    &_text {
+      padding: 10px 10px 200px 10px;
+    }
+  }
+  &__close-modal {
+    position: absolute;
+    cursor: pointer;
+    right: 20px;
+    top: 10px;
+    &::after {
+      background: $white;
+    }
+    &::before {
+      background: $white;
+    }
+    &:hover::after {
+      background: $black;
+    }
+    &:hover::before {
+      background: $black;
+    }
+  }
+}
+.transform_right {
+  transform: translateX(200%);
+}
+.transform_left {
+  transform: translateX(-200%);
+}
+.input_password {
+  width: 500px;
+  height: 50px;
+  margin-top: 50px;
+  border-radius: 10px;
+}

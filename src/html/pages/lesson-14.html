@@ -14,15 +14,62 @@
     @@include('./../components/header.html')
 
 
-    <input placeholder="title" name="name" type="text" class="input-tex_js">
-    <input placeholder="text" name="name" type="text" class="input-tex_js">
-    <input type="submit" class="btn btn_js">
-    <!-- <button class="get"></button> -->
+
+    <div class="blog">
+      <div class="container">
+        <div class="blog__block">
+
+          <div class="blog__header">
+            <h2 class="blog__title blog__title_main">BLOG </h2>
+            <div class="blog__add-post blog__add-post_js"> </div>
+          </div>
+
+          <div class="blog__modal blog__modal_js blog__modal_hidden">
+            <div class="blog__overlay-modal blog__overlay-modal_js"></div>
+            <div class="blog__modal-inner">
+              <div class="blog__close-modal blog__close-modal_js close"></div>
+              <div class="blog__content-modal">
+                <h3 class="blog__title title_h3">что у вас нового?</h3>
+
+                <textarea placeholder="TItle..." type="text"
+                  class="blog__input blog__input_title blog__input_title_js"></textarea>
+
+                <textarea placeholder="Text..." type="text"
+                  class="blog__input blog__input_text blog__input_text_js"></textarea>
+
+                <div class="blog__button blog__button_save-post blog__button_save-post_js">Сохранить</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog__container blog__container_js">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <input type="password" class="input_password input_password_js">
+    </div>
+
+
+
+
 
 
   </div>
 </body>
+
+
+
+
+
+
+
 <script src="main.js"></script>
+<script src="instruments.js"></script>
 <script src="BASKET.js"></script>
+<script src="dz14.js"></script>
 
 </html>

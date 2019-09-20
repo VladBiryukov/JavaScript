@@ -8,12 +8,17 @@ $blue: #3590cc;
 $gray: #9c9c9c;
 $white: #ffffff;
 $black: #000000;
+
 // bg
 $bg_gray: #f1f1f1;
 .wrap {
   overflow: hidden;
+  min-height: 100%;
 }
 
+.none {
+  display: none;
+}
 .container {
   max-width: 1180px;
   margin: 0 auto;
@@ -60,5 +65,24 @@ $bg_gray: #f1f1f1;
   100% {
     transform: translateY(0px);
     background: #e46e00;
+  }
+}
+
+.invalid {
+  transition: 0.2s;
+  border: 1px solid red;
+  background: red;
+  animation: invalid 0.01s infinite linear;
+  border-radius: 10px;
+}
+@keyframes invalid {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(0px);
   }
 }

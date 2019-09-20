@@ -7,6 +7,7 @@
     const modalOverlay = document.getElementsByClassName("blog__overlay-modal_js")[0]
     const inputTitleModal = document.getElementsByClassName("blog__input_title_js")[0];
     const inputTextModal = document.getElementsByClassName("blog__input_text_js")[0];
+    var answer = false;
     var obj;
 
     btnHiddenModal.addEventListener("click", hiddenModal);
@@ -15,11 +16,16 @@
     btnAddNewPost.addEventListener("click", addNewPost);
     // загрузка страницы
     window.addEventListener("load", async function () {
+
         try {
-            await get();// получаем данные
-            await createPost(); // обрабатываем и создаём посты на основе полученных данных
+            await get();// получаем данные 
+            if (answer) {
+                await createPost(); // обрабатываем и создаём посты на основе полученных данных
+            }
+
         } catch (error) {
             console.log(error);
+            console.log("нет ответа от сервера");
         }
     })
     // обработка  события keydown у инпута
@@ -44,11 +50,15 @@
         try {
             if (checkInputPost()) {
                 await newPost();
-                inputPostValid();
-                await removeAllPosts();
-                await get();
-                await createPost();
-                hiddenModal();
+                if (answer) {
+                    inputPostValid();
+                    await removeAllPosts();
+                    await get();
+                    if (answer) {
+                        await createPost();
+                        hiddenModal();
+                    }
+                }
             }
         } catch (error) {
             console.log(error);
@@ -65,9 +75,9 @@
                 title: `${inputTitleModal.value}`, text: `${inputTextModal.value}`
             })
         })
-            .then(res => { return res.text() })
+            .then(res => { if (res.ok) return res.text(), answer = true })
             .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err), answer = false)
     }
     //удалить все записи 
     async function removeAllPosts() {
@@ -81,12 +91,18 @@
         var request = await fetch("http://localhost/blog", {
             method: "GET"
         })
-            .then(res => { return res.text() })
-            .then(res => obj = JSON.parse(res)
-            )
-            .catch(err => console.log(err))
-            .finally(res => obj)
+        console.log(request.ok);
+        if (request.ok) {
+            let res = await request.text();
+            obj = JSON.parse(res);
+            res => obj;
+            return answer = true;
+        }
+        else {
+            return answer = false;
+        }
     }
+
     // обрабатываем
     async function createPost() {
         for (let i = 0; i < obj.length; i++) {
@@ -100,7 +116,7 @@
             titlePost.classList.add("blog__name-post", "title_h2");
             textPost.classList.add("blog__text", "blog__text_post");
             deletePost.classList.add("blog__close-post", "close");
-            inputChange.classList.add("blog__input-change", "blog__input-change_hidden")
+            inputChange.classList.add("blog__input-change", "blog__input-change_hidden");
             // присваиваем id 
 
             post.id = `${obj[i]._id}`;
@@ -114,13 +130,33 @@
             post.insertAdjacentElement("beforeend", inputChange);
             containetPost.insertAdjacentElement("beforeend", post);
 
+            deletePost.addEventListener("click", async function () {
+                var request = await fetch("http://localhost/blog", {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _id: `${obj[i]._id}`
+                    })
+                })
 
-            deletePost.addEventListener("click", async function del() {
-                await removePost();
+                    .then(res => {
+                        if (res.ok) {
+                            res.text();
+                            delPost();
+                            return answer = true;
+                        }
+                    })
+                    .catch(res => console.log("не удалось удалить пост"), answer = false)
+
+
+            })
+            async function delPost() {
                 animationRemovePost();
                 await delay(700);
                 post.remove();
-            })
+            }
 
             inputChange.onblur = hiddenInputChange
             titlePost.onclick = function () {
@@ -130,9 +166,12 @@
                     if (e.keyCode == 13) {
                         if (chechInputTItleChange()) {
                             await querySaveChangesTitle();
-                            saveToPage(titlePost);
-                            hiddenInputChange();
-                            emptyInputChange();
+                            if (answer) {
+                                saveToPage(titlePost);
+                                hiddenInputChange();
+                                emptyInputChange();
+
+                            }
                         }
                     }
                 }
@@ -145,9 +184,11 @@
                     if (e.keyCode == 13) {
                         if (chechInputTextChange()) {
                             await querySaveChangesText();
-                            saveToPage(textPost);
-                            hiddenInputChange();
-                            emptyInputChange();
+                            if (answer) {
+                                saveToPage(textPost);
+                                hiddenInputChange();
+                                emptyInputChange();
+                            }
                         }
                     }
                 }
@@ -155,11 +196,11 @@
 
             function chechInputTextChange() {
                 if (checkString(inputChange.value) && inputChange.value.length > titlePost.innerHTML.length) {
-                    inputChange.classList.remove("blog__input_ivalid_js")
+                    inputChange.classList.remove("blog__input_ivalid_js");
                     return true;
                 }
                 else {
-                    inputChange.classList.add("blog__input_ivalid_js")
+                    inputChange.classList.add("blog__input_ivalid_js");
                 }
             }
             function chechInputTItleChange() {
@@ -185,11 +226,9 @@
                         text: `${obj[i].text}`
                     })
                 })
-                try {
-                    res => res.text();
-                } catch (error) {
-                    console.log(err);
-                }
+                    .then(res => { if (res.ok) { res => res.text() } })
+                    .then(res => answer = true)
+                    .catch(err => console.log(err))
             }
 
             async function querySaveChangesText() {
@@ -204,30 +243,43 @@
                         text: `${inputChange.value}`
                     })
                 })
-                try {
-                    res => res.text();
-                } catch (error) {
-                    console.log(err);
-                }
+                    .then(res => { if (res.ok) { res => res.text() } })
+                    .then(res => answer = true)
+                    .catch(err => console.log(err))
             }
 
 
-            async function removePost() {
-                var request = await fetch("http://localhost/blog", {
-                    method: "DELETE",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        _id: `${obj[i]._id}`
-                    })
-                })
-                try {
-                    res => res.text();
-                } catch (error) {
-                    console.log(err);
-                }
-            }
+            // async function removePost() {
+            //     var request = await fetch("http://localhost/blog", {
+            //         method: "DELETE",
+            //         headers: {
+            //             'Content-Type': 'application/json'
+            //         },
+            //         body: JSON.stringify({
+            //             _id: `${obj[i]._id}`
+            //         })
+            //     })
+            //     try {
+            //         if (request.ok) {
+            //             let res = await request.text()
+            //             return answer = true
+            //         }
+            //         else console.log("не удалось удалить пост");
+
+
+            //     } catch (error) {
+            //         console.log("не удалось удалить пост");
+            //         return answer = false
+
+            //     }
+
+
+            //     // try {
+            //     //     res => res.text();
+            //     // } catch (error) {
+            //     //     console.log(err);
+            //     // }
+            // }
             function animationRemovePost() {
                 titlePost.classList.add("transform_right");
                 textPost.classList.add("transform_left");
@@ -311,7 +363,6 @@
 
     const inputPassword = document.getElementsByClassName("input_password_js")[0]
     let regPassword = RegExp(/^(?=.*[a-z])(?=.*[_])[a-z\d_]{4,12}$/)
-
 
     inputPassword.addEventListener("keydown", (e) => {
         setTimeout(() => {

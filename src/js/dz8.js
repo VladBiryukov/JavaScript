@@ -50,12 +50,12 @@ function slider() {
    sliderСontrolLeft.style.cursor = "auto";
 
    sliderСontrolLeft.addEventListener("click", slideBack);
-   sliderСontrolRight.addEventListener("click", slideForward);
-   sliderLine.addEventListener("click", slideForward);
+   sliderСontrolRight.addEventListener("click", slideNext);
+   sliderLine.addEventListener("click", slideNext);
 
    body.addEventListener("keydown", (e) => {
       if (e.keyCode == 39) {
-         slideForward();
+         slideNext();
       }
       else if (e.keyCode == 37) {
          slideBack();
@@ -77,7 +77,7 @@ function slider() {
       }
    }
    // Вперёд 
-   function slideForward() {
+   function slideNext() {
       if (maxPosition != position + 1) {
          sliderLine.style.transform = `translateX(${coordinates - valueWidth}%)`;
          position++;

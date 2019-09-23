@@ -45,6 +45,9 @@
     background-position: center;
     background-size: 33px 57px;
     transition: 0.3s;
+    &_opacity {
+      opacity: 0.5;
+    }
     @media (max-width: 856px) {
       width: 40px;
       height: 100px;
@@ -77,5 +80,17 @@
     width: 6px;
     border-radius: 50%;
     margin: 0 2px;
+    background: $gray;
+    &_active {
+      background: $blue;
+    }
+  }
+
+  &__wrap-btn {
+    display: flex;
+    justify-content: space-around;
+  }
+  &__btn-left {
+    transform: scaleX(-1);
   }
 }

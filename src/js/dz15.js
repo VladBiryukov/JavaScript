@@ -540,15 +540,17 @@ class Slider {
          input.onkeydown = async (e) => {
             await this.delay(10);
             if (input.value >= 0 && input.value < this.maxPosition) {
-               this.coordinates = input.value * this.valueWidth;
                this.position = input.value;
-               this.sliderLine.style.transform = `translateX(-${this.coordinates}%)`;
+               this.coordinates = 0 - (this.valueWidth * input.value)
+               this.sliderLine.style.transform = `translateX(${this.coordinates}%)`;
                this.colorBullet();
                this.colorСontrol();
                this.colorCustomControls();
                return this.coordinates, this.position;
             }
-            else if (input.value > this.maxPosition) {
+
+
+            else if (input.value > this.maxPosition) { 
                this.coordinates = (this.maxPosition - 1) * this.valueWidth
                this.position = this.maxPosition - 1
                this.sliderLine.style.transform = `translateX(-${this.coordinates}%)`;

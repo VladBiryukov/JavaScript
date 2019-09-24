@@ -88,7 +88,7 @@
 
   &__wrap-btn {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
   }
   &__btn-left {
     transform: scaleX(-1);
@@ -102,6 +102,20 @@
   &__input-control {
     display: block;
     margin: 10 auto;
-
+  }
+}
+.wrap_dz8 {
+  .slider__wrap-btn {
+    display: none;
+  }
+}
+.wrap_dz11 {
+  .slider__wrap-btn {
+    display: none;
+  }
+}
+.wrap_dz12 {
+  .slider__wrap-btn {
+    display: none;
   }
 }

@@ -384,6 +384,8 @@ class Slider {
       this.coordinates = 0;
       // ширина слайда
       this.valueWidth = 100 / this.quantityItem;
+      // id interval
+      this.idIntervalAutoPlay = false;
    }
 
    defaultValue() {
@@ -433,7 +435,7 @@ class Slider {
             this.slideNext();
             this.colorBullet();
             this.colorСontrol();
-            this.colorCustomControls()
+            this.colorCustomControls();
          }
       })
    }
@@ -457,6 +459,7 @@ class Slider {
          }
       })
    }
+
    colorСontrol() {
       if (this.position == 0) this.sliderСontrolLeft.classList.add("slider__control_opacity");
       else this.sliderСontrolLeft.classList.remove("slider__control_opacity");
@@ -491,7 +494,6 @@ class Slider {
       }
    }
 
-
    slideBack() {
       if (this.position != 0) {
          this.sliderLine.style.transform = `translateX(${this.coordinates + this.valueWidth}%)`;
@@ -499,15 +501,6 @@ class Slider {
          this.position--;
          return this.coordinates, this.position;
       }
-   }
-
-   autoPlay(interval) {
-      setInterval(() => {
-         this.slideNext();
-         this.colorBullet();
-         this.colorСontrol();
-         this.colorCustomControls();
-      }, interval);
    }
 
    keyArrowСontrol(activation) {
@@ -550,9 +543,9 @@ class Slider {
             }
 
 
-            else if (input.value > this.maxPosition) { 
-               this.coordinates = (this.maxPosition - 1) * this.valueWidth
-               this.position = this.maxPosition - 1
+            else if (input.value > this.maxPosition) {
+               this.coordinates = (this.maxPosition - 1) * this.valueWidth;
+               this.position = this.maxPosition - 1;
                this.sliderLine.style.transform = `translateX(-${this.coordinates}%)`;
                this.colorBullet();
                this.colorСontrol();
@@ -595,6 +588,51 @@ class Slider {
          }, ms);
       })
    }
+   autoPlay(interval) {
+      this.idIntervalAutoPlay = setInterval(() => {
+         this.slideNext();
+         this.colorBullet();
+         this.colorСontrol();
+         this.colorCustomControls();
+      }, interval);
+      return this.idIntervalAutoPlay;
+   }
+
+   mobileSwipe(activation) {
+      if (activation) {
+         let initialPoint;
+         let finalPoint;  
+         this.sliderLine.addEventListener('touchstart', event => {
+            this.sliderLine.classList.add("transition-none")
+            event.preventDefault();
+            event.stopPropagation();
+            initialPoint = event.changedTouches[0]; 
+         }, false);
+ 
+         this.sliderLine.addEventListener('touchend', event => {
+            this.sliderLine.classList.remove("transition-none")
+            event.preventDefault();
+            event.stopPropagation();
+            finalPoint = event.changedTouches[0];
+            var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+ 
+            if (xAbs > 20) {
+               if (finalPoint.pageX < initialPoint.pageX) {
+                  this.slideNext();
+                  this.colorBullet();
+                  this.colorСontrol();
+                  this.colorCustomControls();
+               }
+               else {
+                  this.slideBack();
+                  this.colorBullet();
+                  this.colorСontrol();
+                  this.colorCustomControls();
+               }
+            }
+         }, false); 
+      }
+   }
 }
 
 var slider = new Slider("slider");
@@ -603,6 +641,7 @@ slider.clickSlide(1);
 slider.clickBullet(true);
 slider.keyArrowСontrol(true);
 slider.inputControl(true);
+slider.mobileSwipe(true);
 slider.clickСontrolRight(1);
 slider.clickСontrolLeft(1);
 slider.clickCustomControls("slider__btn-left", "slider__btn-right");

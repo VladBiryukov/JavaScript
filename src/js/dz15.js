@@ -601,21 +601,21 @@ class Slider {
    mobileSwipe(activation) {
       if (activation) {
          let initialPoint;
-         let finalPoint;  
+         let finalPoint;
          this.sliderLine.addEventListener('touchstart', event => {
             this.sliderLine.classList.add("transition-none")
             event.preventDefault();
             event.stopPropagation();
-            initialPoint = event.changedTouches[0]; 
+            initialPoint = event.changedTouches[0];
          }, false);
- 
+
          this.sliderLine.addEventListener('touchend', event => {
             this.sliderLine.classList.remove("transition-none")
             event.preventDefault();
             event.stopPropagation();
             finalPoint = event.changedTouches[0];
             var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
- 
+
             if (xAbs > 20) {
                if (finalPoint.pageX < initialPoint.pageX) {
                   this.slideNext();
@@ -630,7 +630,7 @@ class Slider {
                   this.colorCustomControls();
                }
             }
-         }, false); 
+         }, false);
       }
    }
 }
@@ -645,4 +645,4 @@ slider.mobileSwipe(true);
 slider.clickСontrolRight(1);
 slider.clickСontrolLeft(1);
 slider.clickCustomControls("slider__btn-left", "slider__btn-right");
-slider.autoPlay(5000);
+slider.autoPlay(10000);

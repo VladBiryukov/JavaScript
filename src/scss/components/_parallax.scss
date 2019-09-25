@@ -13,6 +13,7 @@
     margin: 0;
   }
   &__title_parallax {
+    user-select: none;
     color: $white;
     @include style_t(64, 64);
     font-weight: normal;
@@ -20,7 +21,7 @@
     z-index: 2;
   }
 
-  &__container {
+  &__box {
     overflow: hidden;
     position: relative;
     display: flex;
@@ -34,11 +35,14 @@
   }
   &__overlay {
     position: absolute;
-    background: rgba(196, 196, 196, 0.7);
+    background: rgba(196, 196, 196, 0.5);
     height: 100%;
     width: 100%;
     z-index: 1;
     transition: 0.7s;
+    &_active{
+      background: rgba(196, 196, 196, 0);
+    }
   }
   &__img {
     position: absolute;

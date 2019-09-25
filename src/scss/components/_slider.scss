@@ -104,6 +104,7 @@
     margin: 10 auto;
   }
 }
+//лютый костыль, лучше бы я просто через js добавил стрелки
 .wrap_dz8 {
   .slider__wrap-btn {
     display: none;
@@ -119,3 +120,9 @@
     display: none;
   }
 }
+.wrap_dz16{
+  .slider__wrap-btn {
+    display: none;
+  }
+}
+

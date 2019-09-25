@@ -256,7 +256,7 @@ function date() {
          function dateTimer() {
             var dateToday = new Date();
             var number = 60;
-            var dateCurrent = new Date(`${arrDate[1]}/${arrDate[2]}/${arrDate[0]}`);
+            var dateCurrent = new Date(`${arrDate[1]}/${arrDate[2]}/${arrDate[0]}`);  
             var clone = Math.ceil((dateCurrent - dateToday) / 1000);
             var days = Math.floor(clone / (number * number * 24));
             clone = clone % (number * number * 24);
@@ -265,6 +265,7 @@ function date() {
             var minutes = Math.floor(clone / number);
             clone = clone % number;
             var second = clone;
+
             //выводим результат если время не прошло
             if (dateCurrent > dateToday) {
                dateResult.innerHTML =

@@ -24,6 +24,10 @@ function checkInputStr(input) {
     if (/ *[a-zа-я|ё]/i.test(input.value)) return true;
     else false;
 }
+function checkDate(input) {
+    if (/^\d{4}[.]\d{2}[.]\d{2}$/gm.test(input.value)) return true;
+    else false;
+}
 /**
  * 
  * @param {input} принимает инпут
